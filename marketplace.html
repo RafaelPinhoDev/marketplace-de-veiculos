@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+    
+    <link rel="stylesheet" href="./css/style.css">
+    
+    <title>Marketplace de Veículos</title>
+</head>
+<body>
+    <header role="banner"></header>
+    
+    <main class="container-fluid px-4 my-4" role="main">
+        <form aria-label="Busca e filtros de veículos">
+            
+            <section class="bg-light p-4 rounded-3 mb-4 border" aria-labelledby="titulo-busca">
+                <div class="text-center mb-4">
+                    <h1 id="titulo-busca" class="h3 fw-bold mb-1">Encontre seu carro ideal</h1>
+                    <p class="text-muted small">Compare ofertas de lojas de todo o Brasil e faça o melhor negócio.</p>
+                </div>
+                
+                <div class="row g-2 justify-content-center align-items-end mb-4">
+                    <div class="col-md-3">
+                        <label for="busca-marca-topo" class="form-label small text-muted mb-1">Marca ou Modelo</label>
+                        <input type="text" id="busca-marca-topo" class="form-control" placeholder="Ex.: Toyota Corolla">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="busca-preco-topo" class="form-label small text-muted mb-1">Faixa de Preço</label>
+                        <select id="busca-preco-topo" class="form-select">
+                            <option>Selecione</option>
+                            <option>Abaixo de R$ 5.000</option>
+                            <option>R$ 5.000 a R$ 10.000</option>
+                            <option>R$ 10.000 a R$ 15.000</option>
+                            <option>R$ 15.000 a R$ 20.000</option>
+                            <option>R$ 20.000 a R$ 25.000</option>
+                            <option>R$ 25.000 a R$ 30.000</option>
+                            <option>Acima de R$ 30.000</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="busca-regiao-topo" class="form-label small text-muted mb-1">Região</label>
+                        <select id="busca-regiao-topo" class="form-select">
+                            <option>Selecione</option>
+                            <option>Sul</option>
+                            <option>Sudeste</option>
+                            <option>Centro-Oeste</option>
+                            <option>Nordeste</option>
+                            <option>Norte</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1">
+                        <label for="busca-ano-de-topo" class="form-label small text-muted mb-1">Ano</label>
+                        <select id="busca-ano-de-topo" class="form-select" aria-label="Ano inicial">
+                            <option>De</option>
+                            <option>2010</option><option>2015</option><option>2020</option><option>2025</option><option>2026</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1">
+                        <label for="busca-ano-ate-topo" class="form-label mb-1 visually-hidden">Ano final</label>
+                        <select id="busca-ano-ate-topo" class="form-select" aria-label="Ano final">
+                            <option>Até</option>
+                            <option>2010</option><option>2015</option><option>2020</option><option>2025</option><option>2026</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-dark w-100">Buscar</button>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center gap-4 text-muted small" aria-hidden="true">
+                    <span>🛡️ Veículos confiáveis</span>
+                    <span>🏷️ Compare preços</span>
+                    <span>📍 Ofertas do Brasil</span>
+                    <span>🔒 Negociação segura</span>
+                </div>
+            </section>
+
+            <div class="row">
+                <aside class="col-lg-3 mb-4" aria-labelledby="titulo-filtros">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h2 id="titulo-filtros" class="h6 fw-bold mb-0">Filtros</h2>
+                        <button type="reset" class="btn btn-link text-decoration-underline text-dark small p-0 border-0 shadow-none" aria-label="Limpar todos os filtros">Limpar tudo</button>
+                    </div>
+
+                    <div class="mb-3 pb-3 border-bottom">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="fw-bold small" id="label-marca-lateral">Marca</span>
+                            <span aria-hidden="true">⌃</span>
+                        </div>
+                        <input type="text" id="busca-marca-lateral" class="form-control form-control-sm mb-2" placeholder="Buscar marca" aria-labelledby="label-marca-lateral">
+                        
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="marca-vw">
+                            <label class="form-check-label small" for="marca-vw">Volkswagen (1.234)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="marca-fiat">
+                            <label class="form-check-label small" for="marca-fiat">Fiat (987)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="marca-chevrolet">
+                            <label class="form-check-label small" for="marca-chevrolet">Chevrolet (876)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="marca-toyota">
+                            <label class="form-check-label small" for="marca-toyota">Toyota (765)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="marca-honda">
+                            <label class="form-check-label small" for="marca-honda">Honda (543)</label>
+                        </div>
+                    </div>
+                </aside>
+
+                <section class="col-lg-9" aria-labelledby="titulo-resultados">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h2 id="titulo-resultados" class="small fw-normal mb-0">1.248 resultados encontrados</h2>
+                        <div class="d-flex align-items-center gap-2">
+                            <label for="ordenacao" class="small mb-0">Ordenar por:</label>
+                            <select id="ordenacao" class="form-select form-select-sm w-auto">
+                                <option>Mais relevantes</option>
+                                <option>Menor preço</option>
+                                <option>Maior preço</option>
+                            </select>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-sm btn-outline-secondary active">🔲</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">📄</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-3">
+                        
+                        <div class="col">
+                            <article class="card h-100 rounded-3 shadow-sm">
+                                <div class="position-relative">
+                                    <img src="./img/corolla.png" class="card-img-top rounded-top-3 img-carro" alt="Sedan Toyota Corolla XEi 2.0 prata, visto de frente e na diagonal sobre fundo cinza">
+                                    <button type="button" class="btn btn-light btn-sm position-absolute top-0 end-0 m-2 rounded-circle border-0" aria-label="Favoritar Toyota Corolla">♡</button>
+                                </div>
+                                <div class="card-body p-3">
+                                    <h3 class="h6 fw-bold mb-0">Toyota Corolla XEi 2.0</h3>
+                                    <p class="text-muted mb-1" style="font-size: 0.75rem;"><span class="visually-hidden">Ano de fabricação: </span>2020/2020</p>
+                                    <p class="h5 fw-bold mb-3">R$ 96.900</p>
+                                    <div class="text-muted" style="font-size: 0.75rem;">
+                                        <span>🚗 48.000 km | ⛽ Flex</span><br>
+                                        <span>📍 São Paulo - SP</span><br>
+                                        <hr class="my-2">
+                                        <span>🏪 Auto Norte Multimarcas</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="col">
+                            <article class="card h-100 rounded-3 shadow-sm">
+                                <div class="position-relative">
+                                    <img src="./img/honda_civic.png" class="card-img-top rounded-top-3 img-carro" alt="Sedan Honda Civic EXL 2.0 azul escuro, visto de frente e na diagonal sobre fundo cinza">
+                                    <button type="button" class="btn btn-light btn-sm position-absolute top-0 end-0 m-2 rounded-circle border-0" aria-label="Favoritar Honda Civic">♡</button>
+                                </div>
+                                <div class="card-body p-3">
+                                    <h3 class="h6 fw-bold mb-0">Honda Civic EXL 2.0</h3>
+                                    <p class="text-muted mb-1" style="font-size: 0.75rem;"><span class="visually-hidden">Ano de fabricação: </span>2019/2019</p>
+                                    <p class="h5 fw-bold mb-3">R$ 104.900</p>
+                                    <div class="text-muted" style="font-size: 0.75rem;">
+                                        <span>🚗 62.000 km | ⛽ Flex</span><br>
+                                        <span>📍 Campinas - SP</span><br>
+                                        <hr class="my-2">
+                                        <span>🏪 Prime Motors</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="col">
+                            <article class="card h-100 rounded-3 shadow-sm">
+                                <div class="position-relative">
+                                    <img src="./img/jeep.png" class="card-img-top rounded-top-3 img-carro" alt="SUV Jeep Compass Limited 2.0 vermelho, visto de frente e na diagonal sobre fundo cinza">
+                                    <button type="button" class="btn btn-light btn-sm position-absolute top-0 end-0 m-2 rounded-circle border-0" aria-label="Favoritar Jeep Compass">♡</button>
+                                </div>
+                                <div class="card-body p-3">
+                                    <h3 class="h6 fw-bold mb-0">Jeep Compass Limited 2.0</h3>
+                                    <p class="text-muted mb-1" style="font-size: 0.75rem;"><span class="visually-hidden">Ano de fabricação: </span>2021/2021</p>
+                                    <p class="h5 fw-bold mb-3">R$ 129.900</p>
+                                    <div class="text-muted" style="font-size: 0.75rem;">
+                                        <span>🚗 35.000 km | ⛽ Diesel</span><br>
+                                        <span>📍 Belo Horizonte - MG</span><br>
+                                        <hr class="my-2">
+                                        <span>🏪 BH Motors</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="col">
+                            <article class="card h-100 rounded-3 shadow-sm">
+                                <div class="position-relative">
+                                    <img src="./img/volkswagen.png" class="card-img-top rounded-top-3 img-carro" alt="SUV Volkswagen T-Cross 200 TSI preto, visto de frente e na diagonal sobre fundo cinza">
+                                    <button type="button" class="btn btn-light btn-sm position-absolute top-0 end-0 m-2 rounded-circle border-0" aria-label="Favoritar Volkswagen T-Cross">♡</button>
+                                </div>
+                                <div class="card-body p-3">
+                                    <h3 class="h6 fw-bold mb-0">Volkswagen T-Cross 200 TSI</h3>
+                                    <p class="text-muted mb-1" style="font-size: 0.75rem;"><span class="visually-hidden">Ano de fabricação: </span>2020/2021</p>
+                                    <p class="h5 fw-bold mb-3">R$ 84.900</p>
+                                    <div class="text-muted" style="font-size: 0.75rem;">
+                                        <span>🚗 41.000 km | ⛽ Flex</span><br>
+                                        <span>📍 Curitiba - PR</span><br>
+                                        <hr class="my-2">
+                                        <span>🏪 Via Sul Veículos</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="col">
+                            <article class="card h-100 rounded-3 shadow-sm">
+                                <div class="position-relative">
+                                    <img src="./img/fiat_toro.png" class="card-img-top rounded-top-3 img-carro" alt="Picape Fiat Toro Volcano 2.0 4x4 prata, vista de frente e na diagonal sobre fundo cinza">
+                                    <button type="button" class="btn btn-light btn-sm position-absolute top-0 end-0 m-2 rounded-circle border-0" aria-label="Favoritar Fiat Toro">♡</button>
+                                </div>
+                                <div class="card-body p-3">
+                                    <h3 class="h6 fw-bold mb-0">Fiat Toro Volcano 2.0 4x4</h3>
+                                    <p class="text-muted mb-1" style="font-size: 0.75rem;"><span class="visually-hidden">Ano de fabricação: </span>2021/2021</p>
+                                    <p class="h5 fw-bold mb-3">R$ 119.900</p>
+                                    <div class="text-muted" style="font-size: 0.75rem;">
+                                        <span>🚗 25.000 km | ⛽ Diesel</span><br>
+                                        <span>📍 Goiânia - GO</span><br>
+                                        <hr class="my-2">
+                                        <span>🏪 Rota Automóveis</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="col">
+                            <article class="card h-100 rounded-3 shadow-sm">
+                                <div class="position-relative">
+                                    <img src="./img/chevrolet_onix.png" class="card-img-top rounded-top-3 img-carro" alt="Sedan Chevrolet Onix Plus LT 1.0 preto, visto de frente e na diagonal sobre fundo cinza">
+                                    <button type="button" class="btn btn-light btn-sm position-absolute top-0 end-0 m-2 rounded-circle border-0" aria-label="Favoritar Chevrolet Onix">♡</button>
+                                </div>
+                                <div class="card-body p-3">
+                                    <h3 class="h6 fw-bold mb-0">Chevrolet Onix Plus LT 1.0</h3>
+                                    <p class="text-muted mb-1" style="font-size: 0.75rem;"><span class="visually-hidden">Ano de fabricação: </span>2020/2021</p>
+                                    <p class="h5 fw-bold mb-3">R$ 59.900</p>
+                                    <div class="text-muted" style="font-size: 0.75rem;">
+                                        <span>🚗 55.000 km | ⛽ Flex</span><br>
+                                        <span>📍 Porto Alegre - RS</span><br>
+                                        <hr class="my-2">
+                                        <span>🏪 Sul Carros</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="col">
+                            <article class="card h-100 rounded-3 shadow-sm">
+                                <div class="position-relative">
+                                    <img src="./img/hyundai_creta.png" class="card-img-top rounded-top-3 img-carro" alt="SUV Hyundai Creta Pulse 1.6 azul, visto de frente e na diagonal sobre fundo cinza">
+                                    <button type="button" class="btn btn-light btn-sm position-absolute top-0 end-0 m-2 rounded-circle border-0" aria-label="Favoritar Hyundai Creta">♡</button>
+                                </div>
+                                <div class="card-body p-3">
+                                    <h3 class="h6 fw-bold mb-0">Hyundai Creta Pulse 1.6</h3>
+                                    <p class="text-muted mb-1" style="font-size: 0.75rem;"><span class="visually-hidden">Ano de fabricação: </span>2020/2020</p>
+                                    <p class="h5 fw-bold mb-3">R$ 79.900</p>
+                                    <div class="text-muted" style="font-size: 0.75rem;">
+                                        <span>🚗 38.000 km | ⛽ Flex</span><br>
+                                        <span>📍 Rio de Janeiro - RJ</span><br>
+                                        <hr class="my-2">
+                                        <span>🏪 Carioca Motors</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="col">
+                            <article class="card h-100 rounded-3 shadow-sm">
+                                <div class="position-relative">
+                                    <img src="./img/nissan_kicks.png" class="card-img-top rounded-top-3 img-carro" alt="SUV Nissan Kicks SV 1.6 branco com teto preto, visto de frente e na diagonal sobre fundo cinza">
+                                    <button type="button" class="btn btn-light btn-sm position-absolute top-0 end-0 m-2 rounded-circle border-0" aria-label="Favoritar Nissan Kicks">♡</button>
+                                </div>
+                                <div class="card-body p-3">
+                                    <h3 class="h6 fw-bold mb-0">Nissan Kicks SV 1.6</h3>
+                                    <p class="text-muted mb-1" style="font-size: 0.75rem;"><span class="visually-hidden">Ano de fabricação: </span>2019/2020</p>
+                                    <p class="h5 fw-bold mb-3">R$ 69.900</p>
+                                    <div class="text-muted" style="font-size: 0.75rem;">
+                                        <span>🚗 70.000 km | ⛽ Flex</span><br>
+                                        <span>📍 Salvador - BA</span><br>
+                                        <hr class="my-2">
+                                        <span>🏪 Bahia Veículos</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+        </form>
+    </main>
+    
+    <footer role="contentinfo" class="rodape-site"></footer>
+</body>
+</html>

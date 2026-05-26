@@ -1,1 +1,51 @@
-@charset "UTF-8";
+/* 1. CONFIGURAÇÃO GERAL */
+/* Aplica a fonte DM Sans que você importou no HTML para toda a página */
+body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: #f8f9fa; 
+}
+
+/* 2. IMAGENS DOS CARROS */
+/* Trava a altura, coloca o fundo cinza exato da imagem e impede que a foto seja cortada */
+.img-carro {
+    height: 250px;
+    width: 100%;
+    background-color: #e2e2e2; /* <-- Corrigido para misturar com o fundo da foto */
+    object-fit: contain; 
+}
+
+/* 3. EFEITO NOS CARTÕES (HOVER) */
+/* Faz o cartão "pular" um pouquinho e ganhar sombra ao passar o mouse */
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+/* 4. BOTÃO DE FAVORITO (CORAÇÃO) */
+/* Deixa o botão redondo perfeitamente centralizado e muda de cor ao passar o mouse */
+.card .position-absolute .btn {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.card .position-absolute .btn:hover {
+    background-color: #dc3545; /* Fica vermelho ao passar o mouse */
+    color: white;
+}
+
+/* 5. RODAPÉ */
+/* Mantém a altura que estava no seu código HTML */
+.rodape-site {
+    height: 400px;
+    background-color: #e9ecef;
+    margin-top: 40px;
+}
