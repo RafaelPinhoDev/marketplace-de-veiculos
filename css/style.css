@@ -8,9 +8,9 @@ body {
 /* 2. IMAGENS DOS CARROS */
 /* Trava a altura, coloca o fundo cinza exato da imagem e impede que a foto seja cortada */
 .img-carro {
-    height: 250px;
+    height: auto;
     width: 100%;
-    background-color: #e2e2e2; /* <-- Corrigido para misturar com o fundo da foto */
+   
     object-fit: contain; 
 }
 
@@ -48,4 +48,32 @@ body {
     height: 400px;
     background-color: #e9ecef;
     margin-top: 40px;
+}
+
+
+
+
+/* Botão flutuante do WhatsApp */
+.btn-whatsapp-flutuante {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.btn-whatsapp-flutuante:hover {
+    background-color: #128c7e;
+    color: white;
 }
