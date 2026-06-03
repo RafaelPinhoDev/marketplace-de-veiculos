@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema Admin — Painel do Super Admin</title>
+  
+  <!-- 1º: O Bootstrap -->
+  <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+  
+  <!-- 2º: O seu CSS (que vai aplicar o fundo escuro por cima de tudo) -->
+  <link rel="stylesheet" href="./css/dash.css">
+  
+  <!-- Seus scripts -->
+  <script src="./js/dash.js" defer></script>
+</head>
+<body>
+
+<!-- Overlay para fechar sidebar no mobile -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()" aria-hidden="true"></div>
+
+<header class="topbar" role="banner">
+  <!-- Botão hambúrguer (só mobile) -->
+  <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar" onclick="toggleSidebar()">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="topbar-brand">
+    <div class="brand-logo" aria-hidden="true"><i class="bi bi-grid-3x3"></i></div>
+    <div>
+      <div class="brand-title">Sistema Admin</div>
+      <div class="brand-sub">Painel do Super Admin</div>
+    </div>
+  </div>
+
+  <nav class="topbar-nav" aria-label="Navegação principal">
+    <a href="#" class="topnav-link active" aria-current="page" title="Dashboard">
+      <i class="bi bi-house-door" aria-hidden="true"></i>
+      <span>Dashboard</span>
+    </a>
+    <a href="#" class="topnav-link" title="Agências">
+      <i class="bi bi-building" aria-hidden="true"></i>
+      <span>Agências</span>
+    </a>
+    <a href="#" class="topnav-link" title="Planos">
+      <i class="bi bi-credit-card" aria-hidden="true"></i>
+      <span>Planos</span>
+    </a>
+    <a href="#" class="topnav-link" title="Relatórios">
+      <i class="bi bi-bar-chart-line" aria-hidden="true"></i>
+      <span>Relatórios</span>
+    </a>
+    <div class="topbar-divider" aria-hidden="true"></div>
+    <a href="#" class="topnav-link sair" title="Sair">
+      <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
+      <span>Sair</span>
+    </a>
+  </nav>
+</header>
+
+<!-- ══════════════════════════════════════
+     SIDEBAR
+══════════════════════════════════════ -->
+<aside class="sidebar" id="sidebar" role="navigation" aria-label="Menu lateral">
+
+  <nav>
+    <span class="sidebar-label">Menu</span>
+
+    <a href="#" class="nav-item-link active" aria-current="page">
+      <i class="bi bi-speedometer2" aria-hidden="true"></i> Visão Geral
+    </a>
+
+    <!-- Agências com sub-menu -->
+    <div>
+      <button
+        class="nav-item-link w-100 border-0 text-start bg-transparent"
+        aria-expanded="true"
+        aria-controls="submenu-agencias"
+        onclick="toggleSubMenu(this)"
+      >
+        <i class="bi bi-building" aria-hidden="true"></i>
+        Agências
+        <i class="bi bi-chevron-down nav-arrow open" aria-hidden="true"></i>
+      </button>
+      <div id="submenu-agencias" class="sub-nav">
+        <a href="#" class="nav-item-link">Todas as Agências</a>
+        <a href="#" class="nav-item-link">Pendentes</a>
+        <a href="#" class="nav-item-link">Desativadas</a>
+      </div>
+    </div>
+
+    <a href="#" class="nav-item-link">
+      <i class="bi bi-car-front" aria-hidden="true"></i> Veículos
+    </a>
+    <a href="#" class="nav-item-link">
+      <i class="bi bi-chat-dots" aria-hidden="true"></i> Leads / Mensagens
+    </a>
+    <a href="#" class="nav-item-link">
+      <i class="bi bi-credit-card" aria-hidden="true"></i> Planos
+    </a>
+    <a href="#" class="nav-item-link">
+      <i class="bi bi-bar-chart-line" aria-hidden="true"></i> Relatórios
+    </a>
+    <a href="#" class="nav-item-link">
+      <i class="bi bi-people" aria-hidden="true"></i> Usuários
+    </a>
+    <a href="#" class="nav-item-link">
+      <i class="bi bi-gear" aria-hidden="true"></i> Configurações
+    </a>
+    <a href="#" class="nav-item-link">
+      <i class="bi bi-journal-text" aria-hidden="true"></i> Audit Log
+    </a>
+  </nav>
+
+  <!-- User -->
+  <div class="sidebar-user" aria-label="Usuário logado">
+    <div class="user-avatar" aria-hidden="true">SA</div>
+    <div>
+      <div class="user-name">Super Admin</div>
+      <div class="user-email">superadmin@sistema.com</div>
+    </div>
+    <button class="border-0 bg-transparent ms-auto text-muted" aria-label="Mais opções do usuário">
+      <i class="bi bi-chevron-down"></i>
+    </button>
+  </div>
+</aside>
+
+<!-- ══════════════════════════════════════
+     MAIN
+══════════════════════════════════════ -->
+<main class="main" id="main-content">
+  <div class="mb-4">
+    <h1 class="page-title">Visão Geral</h1>
+    <p class="page-subtitle">Acompanhe os principais indicadores do marketplace.</p>
+  </div>
+
+  <!-- ── KPI Cards ── -->
+  <div class="row g-3 mb-4" role="region" aria-label="Indicadores principais">
+
+    <div class="col-12 col-sm-6 col-xl">
+      <article class="kpi-card" aria-label="Agências Ativas">
+        <div class="kpi-header">
+          <i class="bi bi-building" aria-hidden="true"></i> Agências Ativas
+        </div>
+        <div class="kpi-value">1.248</div>
+        <div class="kpi-delta up" aria-label="Aumento de 8,2% vs mês anterior">
+          <i class="bi bi-arrow-up" aria-hidden="true"></i> 8,2% vs mês anterior
+        </div>
+      </article>
+    </div>
+
+    <div class="col-12 col-sm-6 col-xl">
+      <article class="kpi-card" aria-label="Agências Pendentes">
+        <div class="kpi-header">
+          <i class="bi bi-hourglass-split" aria-hidden="true"></i> Agências Pendentes
+        </div>
+        <div class="kpi-value">36</div>
+        <div class="kpi-delta up" aria-label="Aumento de 2,4% vs mês anterior">
+          <i class="bi bi-arrow-up" aria-hidden="true"></i> 2,4% vs mês anterior
+        </div>
+      </article>
+    </div>
+
+    <div class="col-12 col-sm-6 col-xl">
+      <article class="kpi-card" aria-label="Veículos Publicados">
+        <div class="kpi-header">
+          <i class="bi bi-car-front" aria-hidden="true"></i> Veículos Publicados
+        </div>
+        <div class="kpi-value">24.789</div>
+        <div class="kpi-delta up" aria-label="Aumento de 12,6% vs mês anterior">
+          <i class="bi bi-arrow-up" aria-hidden="true"></i> 12,6% vs mês anterior
+        </div>
+      </article>
+    </div>
+
+    <div class="col-12 col-sm-6 col-xl">
+      <article class="kpi-card" aria-label="Leads e Mensagens">
+        <div class="kpi-header">
+          <i class="bi bi-chat-dots" aria-hidden="true"></i> Leads / Mensagens
+        </div>
+        <div class="kpi-value">3.562</div>
+        <div class="kpi-delta up" aria-label="Aumento de 15,3% vs mês anterior">
+          <i class="bi bi-arrow-up" aria-hidden="true"></i> 15,3% vs mês anterior
+        </div>
+      </article>
+    </div>
+
+    <div class="col-12 col-sm-6 col-xl">
+      <article class="kpi-card" aria-label="Receita Mensal">
+        <div class="kpi-header">
+          <i class="bi bi-currency-dollar" aria-hidden="true"></i> Receita Mensal
+        </div>
+        <div class="kpi-value" style="font-size:22px">R$ 1.248.900</div>
+        <div class="kpi-delta up" aria-label="Aumento de 18,7% vs mês anterior">
+          <i class="bi bi-arrow-up" aria-hidden="true"></i> 18,7% vs mês anterior
+        </div>
+      </article>
+    </div>
+
+  </div><!-- /KPI Cards -->
+
+  <!-- ── Aprovação de Agências ── -->
+  <section class="section-card mb-4" aria-labelledby="aprovacao-heading">
+    <div class="section-header d-flex align-items-center justify-content-between flex-wrap gap-2">
+      <div class="d-flex align-items-center gap-2">
+        <h2 class="section-title" id="aprovacao-heading">Aprovação de Agências</h2>
+        <span class="section-badge" aria-label="36 pendentes">36 pendentes</span>
+      </div>
+      <button class="btn-outline-sm">Ver todas as pendências</button>
+    </div>
+
+    <div class="table-responsive">
+      <table class="admin-table" aria-label="Tabela de agências pendentes de aprovação">
+        <thead>
+          <tr>
+            <th scope="col">Agência</th>
+            <th scope="col">Cidade / Região</th>
+            <th scope="col">Plano</th>
+            <th scope="col">Data de Cadastro</th>
+            <th scope="col">Status</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Auto Sul Motors</td>
+            <td>Curitiba / PR</td>
+            <td>Profissional</td>
+            <td><time datetime="2024-05-14">14/05/2024</time></td>
+            <td><span class="badge-status badge-pendente">Pendente</span></td>
+            <td>
+              <div class="d-flex gap-2 flex-wrap">
+                <button class="btn-action btn-approve" aria-label="Aprovar Auto Sul Motors">Aprovar</button>
+                <button class="btn-action"             aria-label="Ver cadastro de Auto Sul Motors">Ver cadastro</button>
+                <button class="btn-action btn-deactivate" aria-label="Desativar Auto Sul Motors">Desativar</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Prime Veículos</td>
+            <td>Belo Horizonte / MG</td>
+            <td>Básico</td>
+            <td><time datetime="2024-05-14">14/05/2024</time></td>
+            <td><span class="badge-status badge-pendente">Pendente</span></td>
+            <td>
+              <div class="d-flex gap-2 flex-wrap">
+                <button class="btn-action btn-approve"    aria-label="Aprovar Prime Veículos">Aprovar</button>
+                <button class="btn-action"                aria-label="Ver cadastro de Prime Veículos">Ver cadastro</button>
+                <button class="btn-action btn-deactivate" aria-label="Desativar Prime Veículos">Desativar</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Fast Car Multimarcas</td>
+            <td>Campinas / SP</td>
+            <td>Profissional</td>
+            <td><time datetime="2024-05-13">13/05/2024</time></td>
+            <td><span class="badge-status badge-pendente">Pendente</span></td>
+            <td>
+              <div class="d-flex gap-2 flex-wrap">
+                <button class="btn-action btn-approve"    aria-label="Aprovar Fast Car Multimarcas">Aprovar</button>
+                <button class="btn-action"                aria-label="Ver cadastro de Fast Car Multimarcas">Ver cadastro</button>
+                <button class="btn-action btn-deactivate" aria-label="Desativar Fast Car Multimarcas">Desativar</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Top Motors</td>
+            <td>Porto Alegre / RS</td>
+            <td>Premium</td>
+            <td><time datetime="2024-05-13">13/05/2024</time></td>
+            <td><span class="badge-status badge-pendente">Pendente</span></td>
+            <td>
+              <div class="d-flex gap-2 flex-wrap">
+                <button class="btn-action btn-approve"    aria-label="Aprovar Top Motors">Aprovar</button>
+                <button class="btn-action"                aria-label="Ver cadastro de Top Motors">Ver cadastro</button>
+                <button class="btn-action btn-deactivate" aria-label="Desativar Top Motors">Desativar</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Via Norte Veículos</td>
+            <td>Manaus / AM</td>
+            <td>Básico</td>
+            <td><time datetime="2024-05-12">12/05/2024</time></td>
+            <td><span class="badge-status badge-pendente">Pendente</span></td>
+            <td>
+              <div class="d-flex gap-2 flex-wrap">
+                <button class="btn-action btn-approve"    aria-label="Aprovar Via Norte Veículos">Aprovar</button>
+                <button class="btn-action"                aria-label="Ver cadastro de Via Norte Veículos">Ver cadastro</button>
+                <button class="btn-action btn-deactivate" aria-label="Desativar Via Norte Veículos">Desativar</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── Bottom Row: Chart + Activities ── -->
+  <div class="row g-3">
+
+    <!-- Chart -->
+    <div class="col-12 col-lg-7">
+      <section class="section-card h-100" aria-labelledby="chart-heading">
+        <div class="section-header justify-content-between flex-wrap gap-2">
+          <h2 class="section-title d-flex align-items-center gap-2" id="chart-heading">
+            Crescimento de Agências e Veículos
+            <button
+              class="border-0 bg-transparent text-muted p-0"
+              aria-label="Informações sobre o gráfico"
+              data-bs-toggle="tooltip"
+              title="Evolução mensal dos últimos 6 meses"
+            ><i class="bi bi-question-circle" aria-hidden="true"></i></button>
+          </h2>
+          <div>
+            <select
+              class="form-select form-select-sm"
+              style="font-size:12px;border-radius:8px;border-color:var(--border)"
+              aria-label="Selecionar período do gráfico"
+            >
+              <option selected>Últimos 6 meses</option>
+              <option>Últimos 3 meses</option>
+              <option>Este ano</option>
+            </select>
+          </div>
+        </div>
+        <div class="chart-wrap">
+          <div class="chart-legend" aria-hidden="true">
+            <span><span class="legend-dot solid"></span> Agências Ativas</span>
+            <span><span class="legend-dot dashed"></span> Veículos Publicados</span>
+          </div>
+
+          <!-- SVG chart acessível -->
+          <svg class="chart" viewBox="0 0 560 180" role="img" aria-label="Gráfico de crescimento de agências e veículos de dezembro de 2023 a maio de 2024">
+            <title>Crescimento de Agências e Veículos</title>
+            <desc>Agências cresceram de 680 em Dez/23 para 1.248 em Mai/24. Veículos cresceram de 370 em Dez/23 para 960 em Mai/24 (escala em milhares).</desc>
+
+            <!-- Grid -->
+            <g stroke="#e4e6ea" stroke-width="1">
+              <line x1="40" y1="10"  x2="550" y2="10"/>
+              <line x1="40" y1="46"  x2="550" y2="46"/>
+              <line x1="40" y1="82"  x2="550" y2="82"/>
+              <line x1="40" y1="118" x2="550" y2="118"/>
+              <line x1="40" y1="154" x2="550" y2="154"/>
+            </g>
+
+            <!-- Y labels — Agências (left) -->
+            <g fill="#9ca3af" font-size="10" text-anchor="end">
+              <text x="36" y="14">1.500</text>
+              <text x="36" y="50">1.200</text>
+              <text x="36" y="86">900</text>
+              <text x="36" y="122">600</text>
+              <text x="36" y="158">300</text>
+            </g>
+
+            <!-- Y labels — Veículos (right) -->
+            <g fill="#9ca3af" font-size="10" text-anchor="start">
+              <text x="554" y="14">25k</text>
+              <text x="554" y="50">20k</text>
+              <text x="554" y="86">15k</text>
+              <text x="554" y="122">10k</text>
+              <text x="554" y="158">5k</text>
+            </g>
+
+            <!-- X labels -->
+            <g fill="#9ca3af" font-size="10" text-anchor="middle">
+              <text x="82"  y="175">Dez/23</text>
+              <text x="164" y="175">Jan/24</text>
+              <text x="246" y="175">Fev/24</text>
+              <text x="328" y="175">Mar/24</text>
+              <text x="410" y="175">Abr/24</text>
+              <text x="492" y="175">Mai/24</text>
+            </g>
+
+            <!--
+              Mapeamento (Agências): 300–1500 → y 154–10  (range 144px para 1200 unidades)
+              680  → 154 - (680-300)/1200*144  = 154 - 45.6  = 108
+              760  → 154 - (760-300)/1200*144  = 154 - 55.2  = 99
+              900  → 154 - (900-300)/1200*144  = 154 - 72    = 82
+              980  → 154 - (980-300)/1200*144  = 154 - 81.6  = 72
+              1150 → 154 - (1150-300)/1200*144 = 154 - 102   = 52
+              1248 → 154 - (1248-300)/1200*144 = 154 - 113.8 = 40
+
+              Mapeamento (Veículos): 5000–25000 → y 154–10  (range 144px para 20000 unidades)
+              370*100 → Escala de veículos em k: 3.7k → y = 154 - (3700-5000)/20000*144 — abaixo de 5k, vou usar 5k como mínimo
+              5k  = 154
+              8k  → 154 - (8000-5000)/20000*144  = 154 - 21.6 = 132
+              10k → 154 - (10000-5000)/20000*144 = 154 - 36   = 118
+              13k → 154 - (13000-5000)/20000*144 = 154 - 57.6 = 96
+              17k → 154 - (17000-5000)/20000*144 = 154 - 86.4 = 68
+              19k → 154 - (19000-5000)/20000*144 = 154 - 100.8= 53
+            -->
+
+            <!-- Agências line (solid) -->
+            <polyline
+              points="82,108 164,99 246,82 328,72 410,52 492,40"
+              fill="none"
+              stroke="#1a1d23"
+              stroke-width="2.5"
+              stroke-linejoin="round"
+              stroke-linecap="round"
+            />
+            <!-- Dots -->
+            <g fill="#1a1d23">
+              <circle cx="82"  cy="108" r="3.5"/>
+              <circle cx="164" cy="99"  r="3.5"/>
+              <circle cx="246" cy="82"  r="3.5"/>
+              <circle cx="328" cy="72"  r="3.5"/>
+              <circle cx="410" cy="52"  r="3.5"/>
+              <circle cx="492" cy="40"  r="3.5"/>
+            </g>
+
+            <!-- Veículos line (dashed) -->
+            <polyline
+              points="82,154 164,132 246,118 328,96 410,68 492,53"
+              fill="none"
+              stroke="#9ca3af"
+              stroke-width="2"
+              stroke-dasharray="6 4"
+              stroke-linejoin="round"
+              stroke-linecap="round"
+            />
+            <!-- Dots -->
+            <g fill="#9ca3af">
+              <circle cx="82"  cy="154" r="3"/>
+              <circle cx="164" cy="132" r="3"/>
+              <circle cx="246" cy="118" r="3"/>
+              <circle cx="328" cy="96"  r="3"/>
+              <circle cx="410" cy="68"  r="3"/>
+              <circle cx="492" cy="53"  r="3"/>
+            </g>
+          </svg>
+        </div>
+      </section>
+    </div>
+
+    <!-- Activities -->
+    <div class="col-12 col-lg-5">
+      <section class="section-card h-100" aria-labelledby="activities-heading">
+        <div class="section-header justify-content-between">
+          <h2 class="section-title" id="activities-heading">Atividades Recentes</h2>
+          <button class="btn-outline-sm">Ver todas</button>
+        </div>
+        <ol class="activity-list list-unstyled mb-0" aria-label="Lista de atividades recentes">
+          <li class="activity-item">
+            <div class="activity-icon" aria-hidden="true"><i class="bi bi-building-add"></i></div>
+            <div class="activity-body">
+              <div class="activity-text">Nova agência cadastrada: Auto Sul Motors (Curitiba/PR)</div>
+              <div class="activity-sub">Aguardando aprovação</div>
+            </div>
+            <time class="activity-time" datetime="PT10M">Há 10 min</time>
+          </li>
+          <li class="activity-item">
+            <div class="activity-icon" aria-hidden="true"><i class="bi bi-arrow-up-circle"></i></div>
+            <div class="activity-body">
+              <div class="activity-text">Agência Prime Veículos atualizou seu plano para Profissional</div>
+            </div>
+            <time class="activity-time" datetime="PT35M">Há 35 min</time>
+          </li>
+          <li class="activity-item">
+            <div class="activity-icon" aria-hidden="true"><i class="bi bi-car-front"></i></div>
+            <div class="activity-body">
+              <div class="activity-text">Novo veículo publicado: Honda Civic EXL 2.0 — Prime Motors</div>
+            </div>
+            <time class="activity-time" datetime="PT1H">Há 1 h</time>
+          </li>
+          <li class="activity-item">
+            <div class="activity-icon" aria-hidden="true"><i class="bi bi-check-circle"></i></div>
+            <div class="activity-body">
+              <div class="activity-text">Pagamento aprovado: Plano Premium — BH Motors</div>
+            </div>
+            <time class="activity-time" datetime="PT2H">Há 2 h</time>
+          </li>
+          <li class="activity-item">
+            <div class="activity-icon" aria-hidden="true"><i class="bi bi-x-circle"></i></div>
+            <div class="activity-body">
+              <div class="activity-text">Agência Top Motors foi desativada por inatividade</div>
+            </div>
+            <time class="activity-time" datetime="PT3H">Há 3 h</time>
+          </li>
+        </ol>
+      </section>
+    </div>
+
+  </div><!-- /bottom row -->
+</main>
+</body>
+</html>
