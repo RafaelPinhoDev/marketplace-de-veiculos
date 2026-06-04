@@ -4,10 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./css/style.css">
-    <title>Cadastro do Veículo</title>
+    
+    <script src="./js/script.js" defer></script>
+    
+    <title>Cadastro do Veículo - Auto Leste</title>
 </head>
 <body>
     
@@ -15,479 +21,293 @@
         Pular para o conteúdo principal
     </a>
 
-    <div class="container-fluid">
-        <div class="row">
+    <div class="header-wrapper">
+        <div class="accessibility-bar d-flex justify-content-end align-items-center px-4" aria-label="Menu de acessibilidade">
+            <span class="me-3 small text-muted d-none d-sm-inline">Acessibilidade:</span>
+            <button class="acc-btn" onclick="ajustarFonte(1)" aria-label="Aumentar tamanho da fonte">A+</button>
+            <button class="acc-btn" onclick="ajustarFonte(-1)" aria-label="Diminuir tamanho da fonte">A-</button>
+            <button class="acc-btn" onclick="toggleContraste()" aria-label="Alternar alto contraste">
+                <i class="bi bi-circle-half" aria-hidden="true"></i> Contraste
+            </button>
+        </div>
+    
+        <header class="topbar" role="banner">
+            <div class="topbar-brand">
+                <div class="brand-logo" aria-hidden="true">
+                    <i class="bi bi-car-front-fill"></i>
+                </div>
+                <div class="brand-title d-none d-sm-block ms-2">Auto<span style="color: var(--accent-pink);">Leste</span></div>
+            </div>
+    
+            <nav class="topbar-nav d-none d-lg-flex ms-auto" aria-label="Navegação principal">
+                <a href="index.html" class="topnav-link">
+                    <i class="bi bi-house-door" aria-hidden="true"></i> <span>Home</span>
+                </a>
+                <a href="marketplace.html" class="topnav-link">
+                    <i class="bi bi-car-front" aria-hidden="true"></i> <span>Marketplace</span>
+                </a>
+                <a href="cadastroVeiculo.html" class="topnav-link active">
+                    <i class="bi bi-plus-circle" aria-hidden="true"></i> <span>Cadastrar Veículo</span>
+                </a>
+                <a href="sobre.html" class="topnav-link">
+                    <i class="bi bi-info-circle" aria-hidden="true"></i> <span>Sobre</span>
+                </a>
+            </nav>
+    
+            <button class="hamburger-btn d-lg-none ms-auto" type="button" aria-label="Abrir menu de navegação" onclick="toggleMobileMenu()">
+                <span></span><span></span><span></span>
+            </button>
+        </header>
+    
+        <nav class="mobile-menu d-lg-none" id="mobileMenu" aria-label="Navegação mobile">
+            <a href="index.html" class="mobile-link"><i class="bi bi-house-door"></i> Home</a>
+            <a href="marketplace.html" class="mobile-link"><i class="bi bi-car-front"></i> Marketplace</a>
+            <a href="cadastroVeiculo.html" class="mobile-link"><i class="bi bi-plus-circle"></i> Cadastrar Veículo</a>
+            <a href="sobre.html" class="mobile-link"><i class="bi bi-info-circle"></i> Sobre Nós</a>
+        </nav>
+    </div>
 
-            <!-- CONTEÚDO -->
-            <main class="col-lg-10 p-5" id="conteudo-principal">
+    <div class="container-fluid mt-4">
+        <div class="row justify-content-center">
 
-                <!-- TÍTULO -->
-                <header class="mb-5">
+            <main class="col-lg-10 p-4 p-md-5" id="conteudo-principal">
+
+                <div class="mb-5">
                     <h1 class="fw-bold">
                         Cadastrar novo veículo
                     </h1>
                     <p class="text-muted">
-                        Preencha as informações do veículo para disponibilizá-lo para aluguel.
+                        Preencha as informações do veículo para disponibilizá-lo para venda ou aluguel.
                     </p>
-                </header>
-
-                <div class="row g-4">
-
-                    <!-- FORMULÁRIO -->
-                    <section class="col-lg-8" aria-labelledby="titulo-informacoes">
-
-                        <article class="card card-custom shadow-sm">
-                            <div class="card-body p-4">
-
-                                <h3 class="fw-bold fs-4 mb-4" id="titulo-informacoes">
-                                    Informações básicas
-                                </h3>
-
-                                <div class="row g-4">
-
-                                    <div class="col-md-6">
-                                        <label for="marca" class="form-label">
-                                            Marca
-                                        </label>
-
-                                        <input type="text" id="marca" class="form-control" placeholder="Ex: Jeep"
-                                            aria-required="true">
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label for="modelo" class="form-label">
-                                            Modelo
-                                        </label>
-
-                                        <input type="text" id="modelo" class="form-control" placeholder="Ex: Compass"
-                                            aria-required="true">
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label for="ano" class="form-label">
-                                            Ano
-                                        </label>
-
-                                        <input type="number" id="ano" class="form-control" placeholder="2023"
-                                            aria-label="Ano do veículo">
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label for="cambio" class="form-label">
-                                            Câmbio
-                                        </label>
-
-                                        <select class="form-select" id="cambio" aria-label="Selecione o câmbio">
-                                            <option>
-                                                Selecione
-                                            </option>
-                                            <option>
-                                                Manual
-                                            </option>
-                                            <option>
-                                                Automático
-                                            </option>
-                                        </select>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label for="combustivel" class="form-label">
-                                            Combustível
-                                        </label>
-
-                                        <select class="form-select" id="combustivel"
-                                            aria-label="Selecione o combustível">
-                                            <option>
-                                                Selecione
-                                            </option>
-                                            <option>
-                                                Flex
-                                            </option>
-                                            <option>
-                                                Gasolina
-                                            </option>
-                                            <option>
-                                                Diesel
-                                            </option>
-                                        </select>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label for="cor" class="form-label">
-                                            Cor
-                                        </label>
-
-                                        <input type="text" id="cor" class="form-control" placeholder="Ex: Branco">
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label for="quilometragem" class="form-label">
-                                            Quilometragem
-                                        </label>
-
-                                        <input type="number" id="quilometragem" class="form-control" placeholder="45000"
-                                            aria-label="Quilometragem do veículo">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- DESCRIÇÃO -->
-                        <article class="card card-custom shadow-sm mt-4">
-                            <div class="card-body p-4">
-
-                                <h3 class="fw-bold fs-4 mb-4">
-                                    Descrição do veículo
-                                </h3>
-
-                                <label for="descricao" class="form-label">
-                                    Descrição
-                                </label>
-
-                                <textarea id="descricao" class="form-control" rows="6"
-                                    placeholder="Descreva o veículo..." aria-describedby="descricao-ajuda"></textarea>
-
-                                <small id="descricao-ajuda" class="text-muted">
-                                    Informe detalhes importantes sobre o veículo.
-                                </small>
-
-                            </div>
-                        </article>
-
-                        <!-- ITENS -->
-                        <article class="card card-custom shadow-sm mt-4">
-                            <div class="card-body p-4">
-
-                                <h3 class="fw-bold fs-4 mb-4">
-                                    Equipamentos
-                                </h3>
-
-                                <div class="row g-3">
-
-                                    <div class="col-md-4">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="ar">
-                                            <label class="form-check-label" for="ar">
-                                                Ar-condicionado
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="camera">
-                                            <label class="form-check-label" for="camera">
-                                                Câmera de ré
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="bluetooth">
-                                            <label class="form-check-label" for="bluetooth">
-                                                Bluetooth
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="multimidia">
-                                            <label class="form-check-label" for="multimidia">
-                                                Central multimídia
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="sensor">
-                                            <label class="form-check-label" for="sensor">
-                                                Sensor de estacionamento
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </article>
-                    </section>
-
-                    <!-- LATERAL -->
-                    <aside class="col-lg-4" aria-label="Informações complementares">
-
-                        <!-- FOTOS -->
-                        <article class="card card-custom shadow-sm">
-                            <div class="card-body p-4">
-
-                                <h3 class="fw-bold fs-4 mb-4">
-                                    Fotos do veículo
-                                </h3>
-
-                                <label class="upload-box w-100" for="fotosVeiculo" aria-label="Enviar fotos do veículo">
-
-                                    <i class="bi bi-cloud-arrow-up fs-1 mb-3" aria-hidden="true"></i>
-
-                                    <p class="mb-0 fw-semibold">
-                                        Clique para enviar imagens
-                                    </p>
-
-                                    <small class="text-muted">
-                                        PNG, JPG ou WEBP
-                                    </small>
-
-                                    <input type="file" id="fotosVeiculo" hidden multiple accept=".png,.jpg,.jpeg,.webp"
-                                        aria-label="Selecionar imagens do veículo">
-                                </label>
-
-                                <!-- PREVIEW -->
-                                <div class="row g-3 mt-3">
-
-                                    <div class="col-4">
-                                        <img class="preview-image"
-                                            src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop"
-                                            alt="Foto frontal do veículo">
-                                    </div>
-
-                                    <div class="col-4">
-                                        <img class="preview-image"
-                                            src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=1200&auto=format&fit=crop"
-                                            alt="Foto lateral do veículo">
-                                    </div>
-
-                                    <div class="col-4">
-                                        <img class="preview-image"
-                                            src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=1200&auto=format&fit=crop"
-                                            alt="Foto interna do veículo">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- PREÇO -->
-                        <article class="card card-custom shadow-sm mt-4">
-                            <div class="card-body p-4">
-
-                                <h3 class="fw-bold fs-4 mb-4">
-                                    Preço e disponibilidade
-                                </h3>
-
-                                <div class="mb-4">
-
-                                    <label for="valorDiaria" class="form-label">
-                                        Valor da diária
-                                    </label>
-
-                                    <input type="number" id="valorDiaria" class="form-control" placeholder="249.90"
-                                        aria-label="Valor da diária do veículo">
-                                </div>
-
-                                <div class="mb-4">
-
-                                    <label for="kmDia" class="form-label">
-                                        Quilometragem por dia
-                                    </label>
-
-                                    <input type="number" id="kmDia" class="form-control" placeholder="200"
-                                        aria-label="Quilometragem permitida por dia">
-                                </div>
-
-                                <div class="mb-4">
-
-                                    <label for="disponibilidade" class="form-label">
-                                        Disponibilidade
-                                    </label>
-
-                                    <select class="form-select" id="disponibilidade"
-                                        aria-label="Selecione a disponibilidade">
-                                        <option>
-                                            Todos os dias
-                                        </option>
-                                        <option>
-                                            Apenas finais de semana
-                                        </option>
-                                        <option>
-                                            Personalizado
-                                        </option>
-                                    </select>
-                                </div>
-
-                                <button class="btn btn-orange w-100 py-3 rounded-4 fw-semibold"
-                                    aria-label="Publicar veículo para aluguel">
-                                    Publicar veículo
-                                </button>
-
-                            </div>
-                        </article>
-                    </aside>
                 </div>
+
+                <form aria-label="Formulário de cadastro de veículo">
+                    
+                    <div class="row g-4 mb-4">
+                        
+                        <section class="col-lg-8" aria-labelledby="titulo-informacoes">
+                            <article class="card card-custom shadow-sm h-100">
+                                <div class="card-body p-4">
+                                    <h3 class="fw-bold fs-4 mb-4" id="titulo-informacoes">Informações básicas</h3>
+
+                                    <div class="row g-4">
+                                        <div class="col-md-6">
+                                            <label for="marca" class="form-label">Marca</label>
+                                            <input type="text" id="marca" class="form-control dash-input" placeholder="Ex: Jeep" aria-required="true">
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="modelo" class="form-label">Modelo</label>
+                                            <input type="text" id="modelo" class="form-control dash-input" placeholder="Ex: Compass" aria-required="true">
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label for="ano" class="form-label">Ano</label>
+                                            <input type="number" id="ano" class="form-control dash-input" placeholder="2023" aria-label="Ano do veículo">
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label for="cambio" class="form-label">Câmbio</label>
+                                            <select class="form-select dash-input" id="cambio" aria-label="Selecione o câmbio">
+                                                <option>Selecione</option>
+                                                <option>Manual</option>
+                                                <option>Automático</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label for="combustivel" class="form-label">Combustível</label>
+                                            <select class="form-select dash-input" id="combustivel" aria-label="Selecione o combustível">
+                                                <option>Selecione</option>
+                                                <option>Flex</option>
+                                                <option>Gasolina</option>
+                                                <option>Diesel</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="cor" class="form-label">Cor</label>
+                                            <input type="text" id="cor" class="form-control dash-input" placeholder="Ex: Branco">
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="quilometragem" class="form-label">Quilometragem</label>
+                                            <input type="number" id="quilometragem" class="form-control dash-input" placeholder="45000" aria-label="Quilometragem do veículo">
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </section>
+
+                        <aside class="col-lg-4" aria-label="Envio de fotos">
+                            <article class="card card-custom shadow-sm h-100">
+                                <div class="card-body p-4 d-flex flex-column">
+                                    <h3 class="fw-bold fs-4 mb-4">Fotos do veículo</h3>
+
+                                    <label class="upload-box w-100 d-flex flex-column justify-content-center align-items-center text-center p-3 flex-grow-1" for="fotosVeiculo" aria-label="Enviar fotos do veículo" style="cursor: pointer; height: auto; min-height: 180px;">
+                                        <i class="bi bi-cloud-arrow-up fs-1 mb-3" style="color: var(--accent-pink);" aria-hidden="true"></i>
+                                        <p class="mb-0 fw-semibold">Clique para enviar imagens</p>
+                                        <small class="text-muted">PNG, JPG ou WEBP</small>
+                                        <input type="file" id="fotosVeiculo" hidden multiple accept=".png,.jpg,.jpeg,.webp" aria-label="Selecionar imagens do veículo">
+                                    </label>
+
+                                    <div class="d-flex gap-2 mt-3 w-100">
+                                        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop" 
+                                             class="rounded border border-secondary" 
+                                             style="flex: 1; height: 90px; object-fit: cover; min-width: 0;" 
+                                             alt="Foto frontal">
+                                             
+                                        <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=1200&auto=format&fit=crop" 
+                                             class="rounded border border-secondary" 
+                                             style="flex: 1; height: 90px; object-fit: cover; min-width: 0;" 
+                                             alt="Foto lateral">
+                                             
+                                        <img src="./img/campass_vermelho.png" 
+                                             class="rounded border border-secondary" 
+                                             style="flex: 1; height: 90px; object-fit: cover; min-width: 0;" 
+                                             alt="Foto interna">
+                                    </div>
+                                </div>
+                            </article>
+                        </aside>
+
+                    </div> <div class="row g-4 mb-4">
+                        
+                        <section class="col-lg-8" aria-labelledby="titulo-descricao">
+                            <article class="card card-custom shadow-sm h-100">
+                                <div class="card-body p-4 d-flex flex-column">
+                                    <h3 class="fw-bold fs-4 mb-4" id="titulo-descricao">Descrição do veículo</h3>
+                                    
+                                    <label for="descricao" class="form-label">Descrição</label>
+                                    <textarea id="descricao" class="form-control dash-input flex-grow-1" style="min-height: 130px;" placeholder="Descreva o veículo..." aria-describedby="descricao-ajuda"></textarea>
+                                    <small id="descricao-ajuda" class="text-muted mt-2">Informe detalhes importantes sobre o veículo.</small>
+                                </div>
+                            </article>
+                        </section>
+
+                        <aside class="col-lg-4" aria-label="Definição de preço">
+                            <article class="card card-custom shadow-sm h-100">
+                                <div class="card-body p-4 d-flex flex-column justify-content-between">
+                                    
+                                    <div>
+                                        <h3 class="fw-bold fs-4 mb-4">Preço e venda</h3>
+
+                                        <div class="mb-4">
+                                            <label for="valorVenda" class="form-label">Valor do veículo (R$)</label>
+                                            <input type="number" id="valorVenda" class="form-control dash-input" placeholder="85000" aria-label="Valor de venda do veículo">
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label for="disponibilidade" class="form-label">Status</label>
+                                            <select class="form-select dash-input" id="disponibilidade" aria-label="Selecione o status">
+                                                <option>Disponível para venda</option>
+                                                <option>Em negociação</option>
+                                                <option>Vendido</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <button class="btn dash-btn w-100 py-3 rounded-3 fw-semibold mt-3" aria-label="Publicar veículo">
+                                        Publicar veículo
+                                    </button>
+                                </div>
+                            </article>
+                        </aside>
+
+                    </div> <div class="row g-4 mb-4">
+                        <section class="col-12" aria-labelledby="titulo-equipamentos">
+                            <article class="card card-custom shadow-sm h-100">
+                                <div class="card-body p-4 text-center">
+                                    <h3 class="fw-bold fs-4 mb-4" id="titulo-equipamentos">Equipamentos</h3>
+
+                                    <div class="d-flex flex-wrap justify-content-center gap-4">
+                                        
+                                        <div class="form-check text-nowrap text-start">
+                                            <input class="form-check-input" type="checkbox" id="ar">
+                                            <label class="form-check-label" for="ar">Ar-condicionado</label>
+                                        </div>
+                                        
+                                        <div class="form-check text-nowrap text-start">
+                                            <input class="form-check-input" type="checkbox" id="camera">
+                                            <label class="form-check-label" for="camera">Câmera de ré</label>
+                                        </div>
+                                        
+                                        <div class="form-check text-nowrap text-start">
+                                            <input class="form-check-input" type="checkbox" id="bluetooth">
+                                            <label class="form-check-label" for="bluetooth">Bluetooth</label>
+                                        </div>
+                                        
+                                        <div class="form-check text-nowrap text-start">
+                                            <input class="form-check-input" type="checkbox" id="multimidia">
+                                            <label class="form-check-label" for="multimidia">Central multimídia</label>
+                                        </div>
+                                        
+                                        <div class="form-check text-nowrap text-start">
+                                            <input class="form-check-input" type="checkbox" id="sensor">
+                                            <label class="form-check-label" for="sensor">Sensor de estacionamento</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </article>
+                        </section>
+                    </div> </form>
             </main>
         </div>
     </div>
+    
     <footer class="footer-custom mt-5" role="contentinfo" aria-label="Rodapé do site">
-
         <div class="container py-5">
 
             <div class="row g-4">
 
-                <!-- LOGO -->
                 <section class="col-lg-4" aria-labelledby="titulo-footer">
-
                     <h2 class="fw-bold" id="titulo-footer">
-                        DriveEasy
+                        <span class="text-white">Auto </span><span style="color: var(--accent-pink);">Leste</span>
                     </h2>
-
                     <p class="text-muted mt-3">
-                        Plataforma de aluguel de veículos onde proprietários
-                        podem anunciar seus carros de forma simples e segura.
+                        A melhor plataforma de venda e negociação de veículos. Compre seu carro com segurança, qualidade e transparência.
                     </p>
-
                 </section>
 
-                <!-- LINKS -->
                 <nav class="col-lg-2 col-6" aria-labelledby="navegacao-footer">
-
-                    <h3 class="fw-bold mb-3 fs-5" id="navegacao-footer">
-                        Navegação
-                    </h3>
-
+                    <h3 class="fw-bold mb-3 fs-5" id="navegacao-footer">Navegação</h3>
                     <ul class="list-unstyled d-flex flex-column gap-2" role="list">
-
-                        <li>
-
-                            <a href="#" class="text-decoration-none text-muted" aria-label="Ir para a página inicial">
-                                Início
-                            </a>
-
-                        </li>
-
-                        <li>
-
-                            <a href="#" class="text-decoration-none text-muted"
-                                aria-label="Ir para a página de veículos">
-                                Veículos
-                            </a>
-
-                        </li>
-
-                        <li>
-
-                            <a href="#" class="text-decoration-none text-muted"
-                                aria-label="Ir para a página de reservas">
-                                Reservas
-                            </a>
-
-                        </li>
-
-                        <li>
-
-                            <a href="#" class="text-decoration-none text-muted"
-                                aria-label="Ir para a página de contato">
-                                Contato
-                            </a>
-
-                        </li>
-
+                        <li><a href="index.html" class="text-decoration-none text-muted" aria-label="Ir para a página inicial">Início</a></li>
+                        <li><a href="marketplace.html" class="text-decoration-none text-muted" aria-label="Ir para a página de veículos">Veículos</a></li>
+                        <li><a href="sobre.html" class="text-decoration-none text-muted" aria-label="Ir para a página sobre nós">Sobre Nós</a></li>
                     </ul>
-
                 </nav>
 
-                <!-- SUPORTE -->
                 <section class="col-lg-3 col-6" aria-labelledby="suporte-footer">
-
-                    <h3 class="fw-bold mb-3 fs-5" id="suporte-footer">
-                        Suporte
-                    </h3>
-
+                    <h3 class="fw-bold mb-3 fs-5" id="suporte-footer">Suporte</h3>
                     <ul class="list-unstyled d-flex flex-column gap-2" role="list">
-
-                        <li>
-
-                            <a href="#" class="text-decoration-none text-muted" aria-label="Abrir central de ajuda">
-                                Central de ajuda
-                            </a>
-
-                        </li>
-
-                        <li>
-
-                            <a href="#" class="text-decoration-none text-muted" aria-label="Abrir termos de uso">
-                                Termos de uso
-                            </a>
-
-                        </li>
-
-                        <li>
-
-                            <a href="#" class="text-decoration-none text-muted"
-                                aria-label="Abrir política de privacidade">
-                                Política de privacidade
-                            </a>
-
-                        </li>
-
+                        <li><a href="#" class="text-decoration-none text-muted" aria-label="Abrir central de ajuda">Central de ajuda</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted" aria-label="Abrir termos de uso">Termos de uso</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted" aria-label="Abrir política de privacidade">Política de privacidade</a></li>
                     </ul>
-
                 </section>
 
-                <!-- REDES -->
                 <section class="col-lg-3" aria-labelledby="redes-footer">
-
-                    <h3 class="fw-bold mb-3 fs-5" id="redes-footer">
-                        Redes sociais
-                    </h3>
-
+                    <h3 class="fw-bold mb-3 fs-5" id="redes-footer">Redes sociais</h3>
                     <div class="d-flex gap-3" role="group" aria-label="Links para redes sociais">
-
-                        <a href="#" class="btn btn-light rounded-circle" aria-label="Instagram da DriveEasy">
-
-                            <i class="bi bi-instagram" aria-hidden="true"></i>
-
-                        </a>
-
-                        <a href="#" class="btn btn-light rounded-circle" aria-label="Facebook da DriveEasy">
-
-                            <i class="bi bi-facebook" aria-hidden="true"></i>
-
-                        </a>
-
-                        <a href="#" class="btn btn-light rounded-circle" aria-label="Twitter X da DriveEasy">
-
-                            <i class="bi bi-twitter-x" aria-hidden="true"></i>
-
-                        </a>
-
-                        <a href="#" class="btn btn-light rounded-circle" aria-label="LinkedIn da DriveEasy">
-
-                            <i class="bi bi-linkedin" aria-hidden="true"></i>
-
-                        </a>
-
+                        <a href="#" class="btn btn-light rounded-circle social-btn" aria-label="Instagram da Auto Leste"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+                        <a href="#" class="btn btn-light rounded-circle social-btn" aria-label="Facebook da Auto Leste"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+                        <a href="#" class="btn btn-light rounded-circle social-btn" aria-label="Twitter X da Auto Leste"><i class="bi bi-twitter-x" aria-hidden="true"></i></a>
                     </div>
-
                 </section>
 
             </div>
-
         </div>
 
-        <!-- COPYRIGHT -->
-        <div class="border-top">
-
+        <div class="border-top" style="border-color: rgba(251,113,133,.2) !important;">
             <div class="container py-3 d-flex flex-column flex-md-row justify-content-between align-items-center">
-
-                <p class="mb-0 text-muted">
-                    © 2026 DriveEasy - Todos os direitos reservados.
+                <p class="mb-0 text-muted small">
+                    © 2026 Auto Leste - Todos os direitos reservados.
                 </p>
-
             </div>
-
         </div>
-
     </footer>
-</body>
 
+</body>
 </html>

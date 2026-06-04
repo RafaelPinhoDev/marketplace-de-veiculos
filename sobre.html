@@ -16,8 +16,8 @@
 </head>
 <body>
     
+    <!-- CABEÇALHO E ACESSIBILIDADE PADRONIZADO -->
     <div class="header-wrapper">
-    
         <div class="accessibility-bar d-flex justify-content-end align-items-center px-4" aria-label="Menu de acessibilidade">
             <span class="me-3 small text-muted d-none d-sm-inline">Acessibilidade:</span>
             <button class="acc-btn" onclick="ajustarFonte(1)" aria-label="Aumentar tamanho da fonte">A+</button>
@@ -28,42 +28,56 @@
         </div>
     
         <header class="topbar" role="banner">
-            
             <div class="topbar-brand">
                 <div class="brand-logo" aria-hidden="true">
                     <i class="bi bi-car-front-fill"></i>
                 </div>
-                <div class="brand-title d-none d-sm-block ms-2">Auto Leste</div>
+                <!-- LOGO BICOLOR -->
+                <div class="brand-title d-none d-sm-block ms-2">Auto<span style="color: var(--accent-pink);">Leste</span></div>
             </div>
     
             <nav class="topbar-nav d-none d-lg-flex ms-auto" aria-label="Navegação principal">
-                <a href="index.html" class="topnav-link active">
+                <a href="index.html" class="topnav-link">
                     <i class="bi bi-house-door" aria-hidden="true"></i> <span>Home</span>
                 </a>
                 <a href="marketplace.html" class="topnav-link">
                     <i class="bi bi-car-front" aria-hidden="true"></i> <span>Marketplace</span>
                 </a>
-                <a href="cadastrar-veiculo.html" class="topnav-link">
+                <a href="cadastroVeiculo.html" class="topnav-link">
                     <i class="bi bi-plus-circle" aria-hidden="true"></i> <span>Cadastrar Veículo</span>
                 </a>
-                <a href="sobre.html" class="topnav-link">
+                <a href="sobre.html" class="topnav-link active">
                     <i class="bi bi-info-circle" aria-hidden="true"></i> <span>Sobre</span>
                 </a>
             </nav>
+
+            <!-- BOTOES LOGIN / CADASTRO (DESKTOP) -->
+            <div class="d-none d-lg-flex align-items-center gap-2 ms-3 border-start border-secondary ps-3">
+                <a href="login.html" class="btn dash-btn-outline" style="padding: 6px 14px; font-size: 0.9rem;">Entrar</a>
+                <a href="cadastro.html" class="btn dash-btn" style="padding: 6px 14px; font-size: 0.9rem;">Cadastre-se</a>
+            </div>
     
             <button class="hamburger-btn d-lg-none ms-auto" type="button" aria-label="Abrir menu de navegação" onclick="toggleMobileMenu()">
                 <span></span><span></span><span></span>
             </button>
-    
         </header>
     
         <nav class="mobile-menu d-lg-none" id="mobileMenu" aria-label="Navegação mobile">
-            <a href="index.html" class="mobile-link active"><i class="bi bi-house-door"></i> Home</a>
+            <a href="index.html" class="mobile-link"><i class="bi bi-house-door"></i> Home</a>
             <a href="marketplace.html" class="mobile-link"><i class="bi bi-car-front"></i> Marketplace</a>
-            <a href="cadastrar-veiculo.html" class="mobile-link"><i class="bi bi-plus-circle"></i> Cadastrar Veículo</a>
-            <a href="sobre.html" class="mobile-link"><i class="bi bi-info-circle"></i> Sobre Nós</a>
+            <a href="cadastroVeiculo.html" class="mobile-link"><i class="bi bi-plus-circle"></i> Cadastrar Veículo</a>
+            <a href="sobre.html" class="mobile-link active"><i class="bi bi-info-circle"></i> Sobre Nós</a>
+            
+            <!-- BOTOES LOGIN / CADASTRO (MOBILE) -->
+            <hr class="border-secondary my-2">
+            <a href="login.html" class="mobile-link"><i class="bi bi-box-arrow-in-right"></i> Entrar</a>
+            <a href="cadastro.html" class="mobile-link justify-content-center mt-2 rounded-3" style="background: var(--accent); color: white;">
+                Cadastre-se
+            </a>
         </nav>
     </div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
     <main class="container my-5" role="main" aria-labelledby="titulo-pagina">
         <div class="text-center mb-4">
             <h1 id="titulo-pagina" class="display-5 fw-bold titulo-sobre">Sobre Nós</h1>
@@ -160,7 +174,51 @@
 
     </section>
     
-    <footer role="contentinfo" class="rodape-site mt-5"></footer>
+    <footer class="footer-custom mt-5" role="contentinfo" aria-label="Rodapé do site">
+        <div class="container py-5">
+            <div class="row g-4">
+                <section class="col-lg-4" aria-labelledby="titulo-footer">
+                    <h2 class="fw-bold" id="titulo-footer">
+                        <span class="text-white">Auto </span><span style="color: var(--accent-pink);">Leste</span>
+                    </h2>
+                    <p class="text-muted mt-3">
+                        A melhor plataforma de venda e negociação de veículos. Compre seu carro com segurança, qualidade e transparência.
+                    </p>
+                </section>
+                <nav class="col-lg-2 col-6" aria-labelledby="navegacao-footer">
+                    <h3 class="fw-bold mb-3 fs-5" id="navegacao-footer">Navegação</h3>
+                    <ul class="list-unstyled d-flex flex-column gap-2" role="list">
+                        <li><a href="index.html" class="text-decoration-none text-muted" aria-label="Ir para a página inicial">Início</a></li>
+                        <li><a href="marketplace.html" class="text-decoration-none text-muted" aria-label="Ir para a página de veículos">Veículos</a></li>
+                        <li><a href="sobre.html" class="text-decoration-none text-muted" aria-label="Ir para a página sobre nós">Sobre Nós</a></li>
+                    </ul>
+                </nav>
+                <section class="col-lg-3 col-6" aria-labelledby="suporte-footer">
+                    <h3 class="fw-bold mb-3 fs-5" id="suporte-footer">Suporte</h3>
+                    <ul class="list-unstyled d-flex flex-column gap-2" role="list">
+                        <li><a href="#" class="text-decoration-none text-muted" aria-label="Abrir central de ajuda">Central de ajuda</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted" aria-label="Abrir termos de uso">Termos de uso</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted" aria-label="Abrir política de privacidade">Política de privacidade</a></li>
+                    </ul>
+                </section>
+                <section class="col-lg-3" aria-labelledby="redes-footer">
+                    <h3 class="fw-bold mb-3 fs-5" id="redes-footer">Redes sociais</h3>
+                    <div class="d-flex gap-3" role="group" aria-label="Links para redes sociais">
+                        <a href="#" class="btn btn-light rounded-circle social-btn" aria-label="Instagram da Auto Leste"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+                        <a href="#" class="btn btn-light rounded-circle social-btn" aria-label="Facebook da Auto Leste"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+                        <a href="#" class="btn btn-light rounded-circle social-btn" aria-label="Twitter X da Auto Leste"><i class="bi bi-twitter-x" aria-hidden="true"></i></a>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="border-top" style="border-color: rgba(251,113,133,.2) !important;">
+            <div class="container py-3 d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <p class="mb-0 text-muted small">
+                    © 2026 Auto Leste - Todos os direitos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>

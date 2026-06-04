@@ -353,6 +353,13 @@ body.alto-contraste .dash-btn { background: #ff0; color: #000; }
     box-shadow: 0 4px 24px rgba(0,0,0,.45);
 }
 
+.img-preview-fixa {
+    width: 100%;
+    height: 100px !important;
+    object-fit: cover !important;
+    border-radius: 6px;
+}
+
 .btn-orange{
     background: linear-gradient(135deg,#e11d48,#fb7185);
     border: none;
@@ -563,4 +570,32 @@ textarea{
     background: rgba(225,29,72,.15);
     border-color: #fb7185;
     color: #fff0f3;
+}
+
+
+/* Marca (Logo) */
+.brand-title {
+    font-family: 'DM Sans', sans-serif; /* Força a mesma fonte */
+    font-size: 1.45rem; /* Aumenta o tamanho (equivalente a uns 23px) */
+    font-weight: 800; /* Deixa a letra bem grossa (Extra Bold) */
+    color: #fff;
+    letter-spacing: -0.5px; /* Junta um pouquinho as letras */
+    line-height: 1;
+}
+
+#titulo-footer {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+
+/* AJUSTE DAS FOTOS DE PREVIEW (CADASTRO DE VEÍCULOS) */
+.preview-image {
+    width: 100%;
+    height: 90px; /* Trava a altura de todas as fotos para ficarem iguais */
+    object-fit: cover; /* Faz a foto preencher o espaço sem distorcer ou amassar */
+    border-radius: 8px; /* Arredonda as pontas para combinar com o tema */
+    border: 1px solid var(--border); /* Borda combinando com os inputs */
 }
