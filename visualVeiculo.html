@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Visualização do Veículo</title>
+</head>
+
+<body>
+    <!-- LINK DE ACESSIBILIDADE -->
+    <a href="#conteudo-principal" class="visually-hidden-focusable">
+        Pular para o conteúdo principal
+    </a>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="container py-5" id="conteudo-principal">
+
+        <div class="row g-4">
+
+            <!-- GALERIA -->
+            <section class="col-lg-7" aria-labelledby="titulo-galeria">
+
+                <h2 id="titulo-galeria" class="visually-hidden">
+                    Galeria de imagens do veículo
+                </h2>
+
+                <!-- IMAGEM PRINCIPAL -->
+                <figure>
+                    <img id="mainImage" class="vehicle-image"
+                        src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop"
+                        alt="Jeep Compass branco vista frontal">
+                </figure>
+
+                <!-- MINIATURAS -->
+                <div class="row g-3 mt-2" aria-label="Miniaturas das fotos do veículo">
+
+                    <div class="col-3">
+                        <img class="thumbnail"
+                            src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop"
+                            alt="Miniatura frontal do Jeep Compass" onclick="changeImage(this)" tabindex="0"
+                            role="button" aria-label="Selecionar imagem frontal do veículo">
+                    </div>
+
+                    <div class="col-3">
+                        <img class="thumbnail"
+                            src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=1200&auto=format&fit=crop"
+                            alt="Miniatura lateral do Jeep Compass" onclick="changeImage(this)" tabindex="0"
+                            role="button" aria-label="Selecionar imagem lateral do veículo">
+                    </div>
+
+                    <div class="col-3">
+                        <img class="thumbnail"
+                            src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=1200&auto=format&fit=crop"
+                            alt="Miniatura interna do Jeep Compass" onclick="changeImage(this)" tabindex="0"
+                            role="button" aria-label="Selecionar imagem interna do veículo">
+                    </div>
+
+                    <div class="col-3">
+                        <img class="thumbnail"
+                            src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?q=80&w=1200&auto=format&fit=crop"
+                            alt="Miniatura traseira do Jeep Compass" onclick="changeImage(this)" tabindex="0"
+                            role="button" aria-label="Selecionar imagem traseira do veículo">
+                    </div>
+                </div>
+            </section>
+
+            <!-- DETALHES -->
+            <aside class="col-lg-5" aria-label="Detalhes do veículo">
+
+                <article class="card card-custom shadow-sm h-100">
+
+                    <span class="badge vehicle-badge mb-3 w-auto" aria-label="Categoria do veículo SUV">
+                        SUV
+                    </span>
+
+                    <header>
+
+                        <h1 class="fw-bold">
+                            Jeep Compass
+                        </h1>
+
+                        <p class="text-muted">
+                            2023 • Automático • Flex
+                        </p>
+
+                    </header>
+
+                    <!-- INFORMAÇÕES -->
+                    <section class="row mt-3" aria-labelledby="titulo-informacoes">
+
+                        <h2 id="titulo-informacoes" class="visually-hidden">
+                            Informações do veículo
+                        </h2>
+
+                        <div class="col-6 mb-3">
+                            <i class="bi bi-people" aria-hidden="true"></i>
+                            <span aria-label="Capacidade para 5 pessoas">
+                                5 lugares
+                            </span>
+                        </div>
+
+                        <div class="col-6 mb-3">
+                            <i class="bi bi-door-open" aria-hidden="true"></i>
+                            <span aria-label="Veículo com 4 portas">
+                                4 portas
+                            </span>
+                        </div>
+
+                        <div class="col-6 mb-3">
+                            <i class="bi bi-snow" aria-hidden="true"></i>
+                            <span aria-label="Veículo com ar-condicionado">
+                                Ar-condicionado
+                            </span>
+                        </div>
+
+                        <div class="col-6 mb-3">
+                            <i class="bi bi-fuel-pump" aria-hidden="true"></i>
+                            <span aria-label="Combustível flex">
+                                Flex
+                            </span>
+                        </div>
+                    </section>
+
+                    <!-- PREÇO -->
+                    <section class="price-card rounded-4 p-4 mt-3" aria-labelledby="titulo-preco">
+
+                        <h2 id="titulo-preco" class="visually-hidden">
+                            Informações de preço
+                        </h2>
+
+                        <p class="text-muted mb-1">
+                            Valor da diária
+                        </p>
+
+                        <h2 class="fw-bold price-value"
+                            aria-label="Valor da diária de duzentos e quarenta e nove reais e noventa centavos">
+                            R$ 249,90
+                            <span class="fs-5 price-day">
+                                /dia
+                            </span>
+                        </h2>
+
+                        <p class="text-muted">
+                            200 km inclusos
+                        </p>
+
+                        <button class="btn btn-orange w-100 py-3 rounded-4 fw-bold mt-3"
+                            aria-label="Reservar veículo agora">
+                            Reservar agora
+                        </button>
+                    </section>
+                </article>
+            </aside>
+        </div>
+        <!-- SOBRE + AVALIAÇÕES -->
+        <section class="container mt-4" aria-labelledby="titulo-informacoes-veiculo">
+
+            <div class="row g-4">
+
+                <!-- SOBRE -->
+                <div class="col-lg-8">
+
+                    <article class="feature-card rounded-4 p-3 text-center h-100" aria-labelledby="titulo-sobre-veiculo">
+
+                        <div class="card-body p-4">
+
+                            <header class="mb-4">
+
+                                <h2 class="fw-bold" id="titulo-sobre-veiculo">
+                                    Sobre o veículo
+                                </h2>
+
+                            </header>
+
+                            <p class="text-muted">
+                                O Jeep Compass é ideal para quem busca conforto,
+                                tecnologia e segurança durante suas viagens.
+                                Possui excelente desempenho urbano e rodoviário,
+                                além de acabamento premium e amplo espaço interno.
+                            </p>
+
+                            <!-- CARACTERÍSTICAS -->
+                            <div class="row g-3 mt-4">
+
+                                <div class="col-md-4">
+
+                                    <div class= "feature-card rounded-4 p-3 text-center h-100" aria-label="Seguro incluso">
+
+                                        <i class="bi bi-shield-check fs-2" aria-hidden="true"></i>
+
+                                        <h3 class="fs-6 fw-bold mt-3">
+                                            Seguro incluso
+                                        </h3>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-4">
+
+                                    <div class="feature-card rounded-4 p-3 text-center h-100"
+                                        aria-label="Central multimídia">
+
+                                        <i class="bi bi-speedometer2 fs-2" aria-hidden="true"></i>
+
+                                        <h3 class="fs-6 fw-bold mt-3">
+                                            Central multimídia
+                                        </h3>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-4">
+
+                                    <div class="feature-card rounded-4 p-3 text-center h-100" aria-label="Conforto premium">
+
+                                        <i class="bi bi-star fs-2" aria-hidden="true"></i>
+
+                                        <h3 class="fs-6 fw-bold mt-3">
+                                            Conforto premium
+                                        </h3>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <!-- AVALIAÇÕES -->
+                <div class="col-lg-4">
+
+                    <article class="card card-custom shadow-sm h-100" aria-labelledby="titulo-avaliacoes">
+
+                        <div class="card-body p-4">
+
+                            <header class="mb-4">
+
+                                <h2 class="fw-bold" id="titulo-avaliacoes">
+                                    Avaliações
+                                </h2>
+
+                            </header>
+
+                            <!-- AVALIAÇÃO -->
+                            <div class="border-bottom pb-3 mb-3">
+
+                                <div class="d-flex justify-content-between align-items-center">
+
+                                    <strong>
+                                        Carlos Henrique
+                                    </strong>
+
+                                    <div class="text-warning" aria-label="Cinco estrelas">
+
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+
+                                    </div>
+
+                                </div>
+
+                                <p class="text-muted small mt-2 mb-0">
+                                    Veículo muito confortável e econômico.
+                                </p>
+
+                            </div>
+
+                            <!-- AVALIAÇÃO -->
+                            <div class="border-bottom pb-3 mb-3">
+
+                                <div class="d-flex justify-content-between align-items-center">
+
+                                    <strong>
+                                        Mariana Costa
+                                    </strong>
+
+                                    <div class="text-warning" aria-label="Quatro estrelas">
+
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+
+                                    </div>
+
+                                </div>
+
+                                <p class="text-muted small mt-2 mb-0">
+                                    Processo rápido e carro impecável.
+                                </p>
+
+                            </div>
+
+                            <!-- AVALIAÇÃO -->
+                            <div>
+
+                                <div class="d-flex justify-content-between align-items-center">
+
+                                    <strong>
+                                        Fernanda Lima
+                                    </strong>
+
+                                    <div class="text-warning" aria-label="Cinco estrelas">
+
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+
+                                    </div>
+
+                                </div>
+
+                                <p class="text-muted small mt-2 mb-0">
+                                    Proprietário muito atencioso.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+    </main>
+    <footer class="footer-custom mt-5" role="contentinfo" aria-label="Rodapé do site">
+
+        <div class="container py-5">
+
+            <div class="row g-4">
+
+                <!-- LOGO -->
+                <section class="col-lg-4" aria-labelledby="titulo-footer">
+
+                    <h2 class="fw-bold" id="titulo-footer">
+                        DriveEasy
+                    </h2>
+
+                    <p class="text-muted mt-3">
+                        Plataforma de aluguel de veículos onde proprietários
+                        podem anunciar seus carros de forma simples e segura.
+                    </p>
+
+                </section>
+
+                <!-- LINKS -->
+                <nav class="col-lg-2 col-6" aria-labelledby="navegacao-footer">
+
+                    <h3 class="fw-bold mb-3 fs-5" id="navegacao-footer">
+                        Navegação
+                    </h3>
+
+                    <ul class="list-unstyled d-flex flex-column gap-2" role="list">
+
+                        <li>
+
+                            <a href="#" class="text-decoration-none text-muted" aria-label="Ir para a página inicial">
+                                Início
+                            </a>
+
+                        </li>
+
+                        <li>
+
+                            <a href="#" class="text-decoration-none text-muted"
+                                aria-label="Ir para a página de veículos">
+                                Veículos
+                            </a>
+
+                        </li>
+
+                        <li>
+
+                            <a href="#" class="text-decoration-none text-muted"
+                                aria-label="Ir para a página de reservas">
+                                Reservas
+                            </a>
+
+                        </li>
+
+                        <li>
+
+                            <a href="#" class="text-decoration-none text-muted"
+                                aria-label="Ir para a página de contato">
+                                Contato
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </nav>
+
+                <!-- SUPORTE -->
+                <section class="col-lg-3 col-6" aria-labelledby="suporte-footer">
+
+                    <h3 class="fw-bold mb-3 fs-5" id="suporte-footer">
+                        Suporte
+                    </h3>
+
+                    <ul class="list-unstyled d-flex flex-column gap-2" role="list">
+
+                        <li>
+
+                            <a href="#" class="text-decoration-none text-muted" aria-label="Abrir central de ajuda">
+                                Central de ajuda
+                            </a>
+
+                        </li>
+
+                        <li>
+
+                            <a href="#" class="text-decoration-none text-muted" aria-label="Abrir termos de uso">
+                                Termos de uso
+                            </a>
+
+                        </li>
+
+                        <li>
+
+                            <a href="#" class="text-decoration-none text-muted"
+                                aria-label="Abrir política de privacidade">
+                                Política de privacidade
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </section>
+
+                <!-- REDES -->
+                <section class="col-lg-3" aria-labelledby="redes-footer">
+
+                    <h3 class="fw-bold mb-3 fs-5" id="redes-footer">
+                        Redes sociais
+                    </h3>
+
+                    <div class="d-flex gap-3" role="group" aria-label="Links para redes sociais">
+
+                        <a href="#" class="btn btn-light rounded-circle" aria-label="Instagram da DriveEasy">
+
+                            <i class="bi bi-instagram" aria-hidden="true"></i>
+
+                        </a>
+
+                        <a href="#" class="btn btn-light rounded-circle" aria-label="Facebook da DriveEasy">
+
+                            <i class="bi bi-facebook" aria-hidden="true"></i>
+
+                        </a>
+
+                        <a href="#" class="btn btn-light rounded-circle" aria-label="Twitter X da DriveEasy">
+
+                            <i class="bi bi-twitter-x" aria-hidden="true"></i>
+
+                        </a>
+
+                        <a href="#" class="btn btn-light rounded-circle" aria-label="LinkedIn da DriveEasy">
+
+                            <i class="bi bi-linkedin" aria-hidden="true"></i>
+
+                        </a>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </div>
+
+        <!-- COPYRIGHT -->
+        <div class="border-top">
+
+            <div class="container py-3 d-flex flex-column flex-md-row justify-content-between align-items-center">
+
+                <p class="mb-0 text-muted">
+                    © 2026 DriveEasy - Todos os direitos reservados.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+</body>
+
+</html>

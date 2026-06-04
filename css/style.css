@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* 1. CONFIGURAÇÃO GERAL */
 /* Aplica a fonte DM Sans que você importou no HTML para toda a página */
 body {
@@ -77,84 +76,366 @@ body {
 .btn-whatsapp-flutuante:hover {
     background-color: #128c7e;
     color: white;
-=======
-/* 1. CONFIGURAÇÃO GERAL */
-/* Aplica a fonte DM Sans que você importou no HTML para toda a página */
-body {
-    font-family: 'DM Sans', sans-serif;
-    background-color: #f8f9fa; 
 }
 
-/* 2. IMAGENS DOS CARROS */
-/* Trava a altura, coloca o fundo cinza exato da imagem e impede que a foto seja cortada */
-.img-carro {
-    height: auto;
+/*               ///////////////CADASTRO VEICULO ////////////////////////         */
+
+/* IMAGENS */
+.vehicle-image{
     width: 100%;
-   
-    object-fit: contain; 
+    height: 500px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid rgba(251,113,133,.2);
 }
 
-/* 3. EFEITO NOS CARTÕES (HOVER) */
-/* Faz o cartão "pular" um pouquinho e ganhar sombra ao passar o mouse */
-.card {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+.thumbnail{
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: .3s;
+    border: 1px solid rgba(251,113,133,.2);
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+.thumbnail:hover{
+    transform: scale(1.02);
+    border-color: #fb7185;
 }
 
-/* 4. BOTÃO DE FAVORITO (CORAÇÃO) */
-/* Deixa o botão redondo perfeitamente centralizado e muda de cor ao passar o mouse */
-.card .position-absolute .btn {
-    width: 35px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    transition: background-color 0.2s, color 0.2s;
+/* CARDS */
+.details-card,
+.card-custom{
+    background: #1c0d11;
+    border: 1px solid rgba(251,113,133,.2);
+    border-radius: 12px;
+    color: #fff0f3;
+    box-shadow: 0 4px 24px rgba(0,0,0,.4);
 }
 
-.card .position-absolute .btn:hover {
-    background-color: #dc3545; /* Fica vermelho ao passar o mouse */
+/* BOTÕES */
+.btn-orange{
+    background: linear-gradient(135deg,#e11d48,#fb7185);
+    color: white;
+    border: none;
+    font-weight: 600;
+}
+
+.btn-orange:hover{
+    background: linear-gradient(135deg,#be123c,#e11d48);
     color: white;
 }
 
-/* 5. RODAPÉ */
-/* Mantém a altura que estava no seu código HTML */
-.rodape-site {
-    height: 400px;
-    background-color: #e9ecef;
-    margin-top: 40px;
+.btn-dark{
+    background: linear-gradient(135deg,#e11d48,#fb7185);
+    border: none;
 }
 
+.btn-dark:hover{
+    background: linear-gradient(135deg,#be123c,#e11d48);
+}
 
+/* FEATURES */
+.feature-card{
+    background: #1c0d11;
+    border: 1px solid rgba(251,113,133,.2);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    height: 100%;
+    color: #fff0f3;
+}
 
+/* SIDEBAR */
+.sidebar{
+    min-height: 100vh;
+    background-color: #160a0d;
+    border-right: 1px solid rgba(251,113,133,.2);
+}
 
-/* Botão flutuante do WhatsApp */
-.btn-whatsapp-flutuante {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #25d366;
-    color: white;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-    z-index: 1000;
+.sidebar-link{
     text-decoration: none;
-    transition: background-color 0.2s;
+    color: #e8a0b0;
+    padding: 12px 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: .2s;
 }
 
-.btn-whatsapp-flutuante:hover {
-    background-color: #128c7e;
-    color: white;
->>>>>>> 05b7d0d (Nova estrutura do repositorio)
+.sidebar-link:hover{
+    background-color: rgba(251,113,133,.12);
+    color: #fff0f3;
 }
+
+/* UPLOAD */
+.upload-box{
+    border: 2px dashed rgba(251,113,133,.35);
+    border-radius: 12px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #160a0d;
+    cursor: pointer;
+    color: #e8a0b0;
+}
+
+.upload-box:hover{
+    background-color: #1c0d11;
+    border-color: #fb7185;
+}
+
+.preview-image{
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid rgba(251,113,133,.2);
+}
+
+/* FORMULÁRIOS */
+.form-control,
+.form-select{
+    background-color: #160a0d;
+    border: 1px solid rgba(251,113,133,.2);
+    color: #fff0f3;
+}
+
+.form-control:focus,
+.form-select:focus{
+    background-color: #160a0d;
+    color: #fff0f3;
+    border-color: #fb7185;
+    box-shadow: 0 0 0 .25rem rgba(225,29,72,.25);
+}
+
+.form-control::placeholder{
+    color: #e8a0b0;
+}
+
+.form-label{
+    color: #fff0f3;
+    font-weight: 500;
+}
+
+.form-check-label{
+    color: #e8a0b0;
+}
+
+.form-check-input:checked{
+    background-color: #e11d48;
+    border-color: #e11d48;
+}
+
+/* TEXTOS */
+.text-muted{
+    color: #e8a0b0 !important;
+}
+
+h1,h2,h3,h4,h5,h6{
+    color: #fff0f3;
+}
+
+/* FOOTER */
+footer{
+    background-color: #160a0d !important;
+    border-top: 1px solid rgba(251,113,133,.2) !important;
+}
+
+footer .text-muted{
+    color: #e8a0b0 !important;
+}
+
+footer a{
+    color: #e8a0b0 !important;
+}
+
+footer a:hover{
+    color: #fb7185 !important;
+}
+
+footer .btn-light{
+    background-color: #1c0d11;
+    border: 1px solid rgba(251,113,133,.2);
+    color: #fb7185;
+}
+
+footer .btn-light:hover{
+    background-color: rgba(225,29,72,.15);
+    border-color: #fb7185;
+}
+
+/* ACESSIBILIDADE */
+:focus-visible{
+    outline: 2px solid #fb7185;
+    outline-offset: 2px;
+}
+
+textarea{
+    resize: none;
+}
+
+/*///////////////VISUALIZAÇÃO VEICULO ///////////////////////////////////////*/
+
+body{
+    background-color: #0f0508 !important;
+    color: #fff0f3;
+}
+
+/* BADGE SUV */
+.vehicle-badge{
+    background: rgba(225,29,72,.15);
+    color: #fb7185;
+    border: 1px solid rgba(251,113,133,.25);
+    padding: 8px 14px;
+}
+
+/* CARD PREÇO */
+.price-card{
+    background: #160a0d;
+    border: 1px solid rgba(251,113,133,.2);
+}
+
+.price-value{
+    color: #fff0f3;
+}
+
+.price-day{
+    color: #e8a0b0;
+}
+
+/* CARD DETALHES */
+.details-card{
+    background: #1c0d11;
+    border: 1px solid rgba(251,113,133,.2);
+    color: #fff0f3;
+    border-radius: 12px;
+}
+
+/* CARDS */
+.card-custom{
+    background: #1c0d11;
+    border: 1px solid rgba(251,113,133,.2);
+    color: #fff0f3;
+    border-radius: 12px;
+}
+
+/* CARACTERÍSTICAS */
+.feature-card{
+    background: #160a0d;
+    border: 1px solid rgba(251,113,133,.2);
+    color: #fff0f3;
+    transition: .3s;
+}
+
+.feature-card:hover{
+    border-color: #fb7185;
+    transform: translateY(-3px);
+}
+
+.feature-card i{
+    color: #fb7185;
+}
+
+/* AVALIAÇÕES */
+.border-bottom{
+    border-color: rgba(251,113,133,.15) !important;
+}
+
+.text-warning{
+    color: #fbbf24 !important;
+}
+
+/* GALERIA */
+.vehicle-image{
+    border: 1px solid rgba(251,113,133,.2);
+    box-shadow: 0 4px 24px rgba(0,0,0,.45);
+}
+
+.thumbnail{
+    border: 1px solid rgba(251,113,133,.2);
+}
+
+.thumbnail:hover{
+    border-color: #fb7185;
+}
+
+/* BOTÃO RESERVAR */
+.btn-orange{
+    background: linear-gradient(
+        135deg,
+        #e11d48,
+        #fb7185
+    );
+    border: none;
+}
+
+.btn-orange:hover{
+    background: linear-gradient(
+        135deg,
+        #be123c,
+        #e11d48
+    );
+}
+
+/* SOCIAL */
+.social-btn{
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #1c0d11;
+    border: 1px solid rgba(251,113,133,.2);
+
+    color: #fb7185;
+
+    transition: .3s;
+}
+
+.social-btn:hover{
+    background: rgba(225,29,72,.15);
+    border-color: #fb7185;
+    color: #fff0f3;
+}
+
+/* FOOTER */
+.footer-custom{
+    background: #160a0d;
+    border-top: 1px solid rgba(251,113,133,.2);
+}
+
+.footer-custom h2,
+.footer-custom h3{
+    color: #fff0f3;
+}
+
+.footer-custom a{
+    color: #e8a0b0 !important;
+}
+
+.footer-custom a:hover{
+    color: #fb7185 !important;
+}
+
+.footer-custom .text-muted{
+    color: #e8a0b0 !important;
+}
+
+/* ACESSIBILIDADE */
+:focus-visible{
+    outline: 2px solid #fb7185;
+    outline-offset: 2px;
+}
+
+/* TÍTULOS */
+h1,h2,h3,h4,h5,h6{
+    color: #fff0f3;
+}
+
+/*          /////////////////////////////////////////////////////             */
