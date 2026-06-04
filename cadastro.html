@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    
+    <script src="./js/script.js" defer></script>
+    <script src="./js/login.js" defer></script>
+    
+    <title>Cadastro - Auto Leste</title>
+</head>
+<body>
+
+    <!-- CABEÇALHO SIMPLIFICADO -->
+    <div class="header-wrapper">
+        <div class="accessibility-bar d-flex justify-content-end align-items-center px-4">
+            <span class="me-3 small text-muted d-none d-sm-inline">Acessibilidade:</span>
+            <button class="acc-btn" onclick="ajustarFonte(1)">A+</button>
+            <button class="acc-btn" onclick="ajustarFonte(-1)">A-</button>
+            <button class="acc-btn" onclick="toggleContraste()"><i class="bi bi-circle-half"></i></button>
+        </div>
+
+        <header class="topbar">
+            <div class="topbar-brand">
+                <a href="index.html" class="d-flex align-items-center text-decoration-none">
+                    <div class="brand-logo"><i class="bi bi-car-front-fill"></i></div>
+                    <div class="brand-title ms-2">Auto<span style="color: var(--accent-pink);">Leste</span></div>
+                </a>
+            </div>
+
+            <div class="ms-auto">
+                <a href="index.html" class="btn dash-btn-outline">
+                    <i class="bi bi-box-arrow-right"></i> Sair
+                </a>
+            </div>
+        </header>
+    </div>
+
+    <main class="container d-flex align-items-center justify-content-center" style="min-height: 85vh;">
+        <div class="row justify-content-center w-100">
+            <div class="col-md-6">
+                
+                <article class="dash-card p-5 shadow-lg">
+                    <div class="text-center mb-4">
+                        <h1 class="h4">Criar conta</h1>
+                        <p class="text-muted small">Junte-se à Auto Leste</p>
+                    </div>
+
+                    <form id="cadastroForm">
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome Completo</label>
+                            <input type="text" id="nome" class="form-control dash-input" required placeholder="Seu nome">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">E-mail</label>
+                            <input type="email" id="email" class="form-control dash-input" required placeholder="seu@email.com">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="senha" class="form-label">Senha</label>
+                            <input type="password" id="senha" class="form-control dash-input" required placeholder="********">
+                        </div>
+
+                        <!-- CAMPO DE PERFIL ADICIONADO -->
+                        <div class="mb-4">
+                            <label for="perfil" class="form-label">Tipo de Acesso</label>
+                            <select id="perfil" class="form-select dash-input" required>
+                                <option value="" disabled selected>Como deseja se cadastrar?</option>
+                                <option value="cliente">Cliente</option>
+                                <option value="admin">Administrador</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn dash-btn w-100 py-2 mt-3">Cadastrar</button>
+                    </form>
+
+                    <div class="text-center mt-4">
+                        <p class="text-muted small">Já tem uma conta? <a href="login.html" style="color: var(--accent-pink);">Entrar</a></p>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
