@@ -124,7 +124,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--text-main); }
     width: 100%;
     object-fit: contain; 
     border-bottom: 1px solid var(--border);
-    background-color: #fff; /* Fundo branco/cinza para combinar com o recorte das fotos dos carros */
+    background-color: #fff; 
     border-top-left-radius: calc(var(--radius) - 1px);
     border-top-right-radius: calc(var(--radius) - 1px);
 }
@@ -156,7 +156,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--text-main); }
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.875rem; /* Ajustado de px para rem */
+    font-size: 1.875rem; 
     box-shadow: var(--shadow);
     z-index: 1000;
     text-decoration: none;
@@ -169,7 +169,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--text-main); }
 }
 
 /* ════════════════════════════════
-   CABEÇALHO & ACESSIBILIDADE
+   CABEÇALHO & ACESSIBILIDADE (Suas Alterações)
 ════════════════════════════════ */
 :root {
     --topbar-h: 65px;
@@ -177,7 +177,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--text-main); }
 }
 
 body {
-    padding-top: calc(var(--topbar-h) + var(--acc-bar-h)); /* Espaço para o cabeçalho fixo */
+    padding-top: calc(var(--topbar-h) + var(--acc-bar-h)); 
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -194,18 +194,18 @@ body {
     height: var(--acc-bar-h);
     background-color: #000;
     border-bottom: 1px solid rgba(255,255,255,0.05);
-    padding-top: 5px;    /* Espaço extra para os novos botões */
+    padding-top: 5px;    
     padding-bottom: 5px;
 }
 
 .acc-btn {
-    background: rgba(255, 255, 255, 0.08); /* Fundo ligeiramente visível */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Borda visível */
-    border-radius: 6px; /* Cantos arredondados */
+    background: rgba(255, 255, 255, 0.08); 
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    border-radius: 6px; 
     color: var(--text-muted);
     font-size: 0.85rem; 
     font-weight: 600;
-    padding: 2px 10px; /* Espaçamento interno ajustado */
+    padding: 2px 10px; 
     cursor: pointer;
     transition: all 0.2s ease;
     display: flex;
@@ -214,8 +214,8 @@ body {
 }
 
 .acc-btn:hover, .acc-btn:focus-visible {
-    background: rgba(255, 255, 255, 0.15); /* Fundo mais claro ao passar o rato */
-    border-color: rgba(255, 255, 255, 0.4); /* Borda mais forte ao passar o rato */
+    background: rgba(255, 255, 255, 0.15); 
+    border-color: rgba(255, 255, 255, 0.4); 
     color: #fff;
     outline: none;
 }
@@ -240,7 +240,7 @@ body {
     display: flex; align-items: center; gap: 7px;
     padding: 8px 14px;
     border-radius: 8px;
-    font-size: 0.9rem; /* Ajustado de px para rem */
+    font-size: 0.9rem; 
     font-weight: 500;
     color: rgba(255,255,255,.6);
     transition: background .15s, color .15s;
@@ -269,13 +269,13 @@ body {
     background: linear-gradient(135deg, var(--accent), var(--accent-pink));
     border-radius: 9px;
     display: grid; place-items: center;
-    font-size: 1.15rem; /* Ajustado de px para rem */
+    font-size: 1.15rem; 
     color: #fff;
     box-shadow: 0 2px 10px rgba(225,29,72,.45);
 }
 
 .brand-title {
-    font-size: 1rem; /* Ajustado de px para rem */
+    font-size: 1rem; 
     font-weight: 700; 
     color: #fff;
     letter-spacing: -0.5px;
@@ -315,13 +315,13 @@ body {
     text-decoration: none;
     display: flex; align-items: center; gap: 10px;
     font-weight: 500;
-    font-size: 0.95rem; /* Adicionado em rem para escalar no mobile */
+    font-size: 0.95rem; 
 }
 .mobile-link:hover { background: rgba(255,255,255,.05); color: #fff; }
 .mobile-link.active { background: var(--accent-light); color: var(--accent-pink); }
 
 /* ════════════════════════════════
-   TEMA DE ALTO CONTRASTE
+   TEMA DE ALTO CONTRASTE (Suas Alterações)
 ════════════════════════════════ */
 body.alto-contraste {
     --bg: #000 !important;
@@ -338,3 +338,229 @@ body.alto-contraste {
 body.alto-contraste .brand-logo { background: #fff; color: #000; box-shadow: none; }
 body.alto-contraste .acc-btn { color: #ff0; }
 body.alto-contraste .dash-btn { background: #ff0; color: #000; }
+
+/* ════════════════════════════════
+   CADASTRO E VISUALIZAÇÃO DE VEÍCULOS (Alterações do Grupo)
+════════════════════════════════ */
+
+/* IMAGENS */
+.vehicle-image{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid rgba(251,113,133,.2);
+    box-shadow: 0 4px 24px rgba(0,0,0,.45);
+}
+
+.btn-orange{
+    background: linear-gradient(135deg,#e11d48,#fb7185);
+    border: none;
+}
+
+.btn-orange:hover{
+    background: linear-gradient(135deg,#be123c,#e11d48);
+    color: white;
+}
+
+.btn-dark{
+    background: linear-gradient(135deg,#e11d48,#fb7185);
+    border: none;
+}
+
+.btn-dark:hover{
+    background: linear-gradient(135deg,#be123c,#e11d48);
+}
+
+/* FEATURES */
+.feature-card{
+    background: #1c0d11;
+    border: 1px solid rgba(251,113,133,.2);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    height: 100%;
+    color: #fff0f3;
+    transition: .3s;
+}
+
+.feature-card:hover{
+    border-color: #fb7185;
+    transform: translateY(-3px);
+}
+
+.feature-card i{
+    color: #fb7185;
+}
+
+/* SIDEBAR */
+.sidebar{
+    min-height: 100vh;
+    background-color: #160a0d;
+    border-right: 1px solid rgba(251,113,133,.2);
+}
+
+.sidebar-link{
+    text-decoration: none;
+    color: #e8a0b0;
+    padding: 12px 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: .2s;
+}
+
+.sidebar-link:hover{
+    background-color: rgba(251,113,133,.12);
+    color: #fff0f3;
+}
+
+/* UPLOAD */
+.upload-box{
+    border: 2px dashed rgba(251,113,133,.35);
+    border-radius: 12px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+}
+
+/* FORMULÁRIOS */
+.form-control,
+.form-select{
+    background-color: #160a0d;
+    border: 1px solid rgba(251,113,133,.2);
+    color: #fff0f3;
+}
+
+.form-control:focus,
+.form-select:focus{
+    background-color: #160a0d;
+    color: #fff0f3;
+    border-color: #fb7185;
+    box-shadow: 0 0 0 .25rem rgba(225,29,72,.25);
+}
+
+.form-control::placeholder{
+    color: #e8a0b0;
+}
+
+.form-label{
+    color: #fff0f3;
+    font-weight: 500;
+}
+
+.form-check-label{
+    color: #e8a0b0;
+}
+
+/* FOOTER CUSTOMIZADO */
+footer{
+    background-color: #160a0d !important;
+    border-top: 1px solid rgba(251,113,133,.2) !important;
+}
+
+footer a:hover, .footer-custom a:hover{
+    color: #fb7185 !important;
+}
+
+footer .btn-light{
+    background-color: #1c0d11;
+    border: 1px solid rgba(251,113,133,.2);
+    color: #fb7185;
+}
+
+footer .btn-light:hover{
+    background-color: rgba(225,29,72,.15);
+    border-color: #fb7185;
+}
+
+.footer-custom{
+    background: #160a0d;
+    border-top: 1px solid rgba(251,113,133,.2);
+}
+
+.footer-custom h2, .footer-custom h3{
+    color: #fff0f3;
+}
+
+.footer-custom a, .footer-custom .text-muted{
+    color: #e8a0b0 !important;
+}
+
+/* ACESSIBILIDADE */
+:focus-visible{
+    outline: 2px solid #fb7185;
+    outline-offset: 2px;
+}
+
+textarea{
+    resize: none;
+}
+
+/* BADGE SUV */
+.vehicle-badge{
+    background: rgba(225,29,72,.15);
+    color: #fb7185;
+    border: 1px solid rgba(251,113,133,.25);
+    padding: 8px 14px;
+}
+
+/* CARD PREÇO */
+.price-card{
+    background: #160a0d;
+    border: 1px solid rgba(251,113,133,.2);
+}
+
+.price-value{
+    color: #fff0f3;
+}
+
+.price-day{
+    color: #e8a0b0;
+}
+
+/* CARDS DETALHES */
+.details-card, .card-custom{
+    background: #1c0d11;
+    border: 1px solid rgba(251,113,133,.2);
+    color: #fff0f3;
+    border-radius: 12px;
+}
+
+/* AVALIAÇÕES */
+.border-bottom{
+    border-color: rgba(251,113,133,.15) !important;
+}
+
+.text-warning{
+    color: #fbbf24 !important;
+}
+
+/* GALERIA */
+.thumbnail{
+    border: 1px solid rgba(251,113,133,.2);
+}
+
+.thumbnail:hover{
+    border-color: #fb7185;
+}
+
+/* SOCIAL */
+.social-btn{
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1c0d11;
+    border: 1px solid rgba(251,113,133,.2);
+    color: #fb7185;
+    transition: .3s;
+}
+
+.social-btn:hover{
+    background: rgba(225,29,72,.15);
+    border-color: #fb7185;
+    color: #fff0f3;
+}
