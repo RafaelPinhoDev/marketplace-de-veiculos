@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -11,14 +10,60 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
     
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/script.js" defer></script>
     
     <title>Sobre Nós - Auto Leste</title>
 </head>
-<body class="bg-light corpo-site">
+<body>
     
-    <header role="banner"></header>
+    <div class="header-wrapper">
     
-    <!-- CONTAINER 1: Título e Banner Principal -->
+        <div class="accessibility-bar d-flex justify-content-end align-items-center px-4" aria-label="Menu de acessibilidade">
+            <span class="me-3 small text-muted d-none d-sm-inline">Acessibilidade:</span>
+            <button class="acc-btn" onclick="ajustarFonte(1)" aria-label="Aumentar tamanho da fonte">A+</button>
+            <button class="acc-btn" onclick="ajustarFonte(-1)" aria-label="Diminuir tamanho da fonte">A-</button>
+            <button class="acc-btn" onclick="toggleContraste()" aria-label="Alternar alto contraste">
+                <i class="bi bi-circle-half" aria-hidden="true"></i> Contraste
+            </button>
+        </div>
+    
+        <header class="topbar" role="banner">
+            
+            <div class="topbar-brand">
+                <div class="brand-logo" aria-hidden="true">
+                    <i class="bi bi-car-front-fill"></i>
+                </div>
+                <div class="brand-title d-none d-sm-block ms-2">Auto Leste</div>
+            </div>
+    
+            <nav class="topbar-nav d-none d-lg-flex ms-auto" aria-label="Navegação principal">
+                <a href="index.html" class="topnav-link active">
+                    <i class="bi bi-house-door" aria-hidden="true"></i> <span>Home</span>
+                </a>
+                <a href="marketplace.html" class="topnav-link">
+                    <i class="bi bi-car-front" aria-hidden="true"></i> <span>Marketplace</span>
+                </a>
+                <a href="cadastrar-veiculo.html" class="topnav-link">
+                    <i class="bi bi-plus-circle" aria-hidden="true"></i> <span>Cadastrar Veículo</span>
+                </a>
+                <a href="sobre.html" class="topnav-link">
+                    <i class="bi bi-info-circle" aria-hidden="true"></i> <span>Sobre</span>
+                </a>
+            </nav>
+    
+            <button class="hamburger-btn d-lg-none ms-auto" type="button" aria-label="Abrir menu de navegação" onclick="toggleMobileMenu()">
+                <span></span><span></span><span></span>
+            </button>
+    
+        </header>
+    
+        <nav class="mobile-menu d-lg-none" id="mobileMenu" aria-label="Navegação mobile">
+            <a href="index.html" class="mobile-link active"><i class="bi bi-house-door"></i> Home</a>
+            <a href="marketplace.html" class="mobile-link"><i class="bi bi-car-front"></i> Marketplace</a>
+            <a href="cadastrar-veiculo.html" class="mobile-link"><i class="bi bi-plus-circle"></i> Cadastrar Veículo</a>
+            <a href="sobre.html" class="mobile-link"><i class="bi bi-info-circle"></i> Sobre Nós</a>
+        </nav>
+    </div>
     <main class="container my-5" role="main" aria-labelledby="titulo-pagina">
         <div class="text-center mb-4">
             <h1 id="titulo-pagina" class="display-5 fw-bold titulo-sobre">Sobre Nós</h1>
@@ -26,12 +71,11 @@
         </div>
 
         <div class="mb-5">
-            <img src="./img/auto_leste_fachada.png" class="img-fluid w-100 rounded-3 shadow-sm img-sobre-larga" alt="Fachada da loja Auto Leste">
+            <img src="./img/auto_leste_fachada.png" class="img-fluid w-100 rounded-3 shadow-sm" alt="Uma foto externa em ângulo amplo da concessionária Auto Leste Multimarcas, localizada em uma esquina de rua. A fachada de vidro tem um grande letreiro na parte superior com os dizeres 'AUTO LESTE' e 'MULTIMARCAS | NOVOS E SEMINOVOS'. Vários carros de diversas cores estão estacionados na calçada em frente à loja, e o interior da loja é visível através das vitrines. Há também um totem de sinalização na calçada com o logotipo da Auto Leste.">
         </div>
     </main>
 
-    <!-- CONTAINER 2: História (Texto na Esquerda, Imagem na Direita) -->
-    <section class="container mb-5 pb-5 border-bottom" aria-label="Nossa História">
+    <section class="container mb-5 pb-5 border-bottom border-secondary" aria-label="Nossa História">
         <div class="row align-items-center">
             
             <div class="col-lg-6 pe-lg-5 mb-4 mb-lg-0 text-start">
@@ -52,20 +96,18 @@
             </div>
 
             <div class="col-lg-6">
-                <img src="https://placehold.co/800x530?text=Foto+Antiga+da+Loja" class="img-fluid rounded-1 shadow-sm" alt="Foto do início da Auto Leste">
+                <img src="https://placehold.co/800x530?text=Foto+Antiga+da+Loja" class="img-fluid rounded-3 shadow-sm" alt="Foto do início da Auto Leste">
             </div>
 
         </div>
     </section>
 
-    <!-- CONTAINER 3: Excelência e Pilares -->
     <section class="container mb-5" aria-label="Produtos e Serviços">
         
-        <!-- Texto e Imagem Invertidos (Imagem na Esquerda, Texto na Direita) -->
-        <div class="row align-items-center mb-5 pb-4 border-bottom">
+        <div class="row align-items-center mb-5 pb-4 border-bottom border-secondary">
             
             <div class="col-lg-6 order-2 order-lg-1">
-                <img src="https://placehold.co/800x530?text=Interior+da+Loja" class="img-fluid rounded-1 shadow-sm" alt="Visão interna do pátio da concessionária Auto Leste">
+                <img src="./img/auto_leste_dentro.png" class="img-fluid rounded-3 shadow-sm" alt="Fotografia de um vendedor de terno azul e gravata vermelha apertando a mão de um cliente homem de paletó cinza e jeans, com uma prancheta na outra mão. Uma mulher sorridente de blusa branca e saia bege está ao lado do cliente. Todos sorriem. O ambiente é o interior de uma concessionária de carros bem iluminada, com um carro preto visível ao fundo, representando a concretização de uma venda na Auto Leste.">
             </div>
 
             <div class="col-lg-6 ps-lg-5 mb-4 mb-lg-0 text-start order-1 order-lg-2">
@@ -84,11 +126,10 @@
 
         </div>
 
-        <!-- Pilares: Missão, Visão e Valores -->
         <div class="row g-4 text-center">
             <div class="col-md-4">
-                <div class="p-4 h-100 bg-white rounded-3 shadow-sm card-pilar">
-                    <i class="bi bi-bullseye fs-1 mb-3 icone-pilar" aria-hidden="true"></i>
+                <div class="p-4 h-100 dash-card">
+                    <i class="bi bi-bullseye fs-1 mb-3" style="color: var(--accent-pink);" aria-hidden="true"></i>
                     <h2 class="fs-5 fw-bold mb-3">Nossa Missão</h2>
                     <p class="text-muted small mb-0">
                         Vender carros novos e seminovos de qualidade. Ajudar você a realizar o sonho do veículo próprio com preços justos.
@@ -97,8 +138,8 @@
             </div>
 
             <div class="col-md-4">
-                <div class="p-4 h-100 bg-white rounded-3 shadow-sm card-pilar">
-                    <i class="bi bi-eye fs-1 mb-3 icone-pilar" aria-hidden="true"></i>
+                <div class="p-4 h-100 dash-card">
+                    <i class="bi bi-eye fs-1 mb-3" style="color: var(--accent-pink);" aria-hidden="true"></i>
                     <h2 class="fs-5 fw-bold mb-3">Nossa Visão</h2>
                     <p class="text-muted small mb-0">
                         Ser a loja de veículos mais confiável da região e a sua primeira escolha na hora de trocar de carro.
@@ -107,8 +148,8 @@
             </div>
 
             <div class="col-md-4">
-                <div class="p-4 h-100 bg-white rounded-3 shadow-sm card-pilar">
-                    <i class="bi bi-shield-check fs-1 mb-3 icone-pilar" aria-hidden="true"></i>
+                <div class="p-4 h-100 dash-card">
+                    <i class="bi bi-shield-check fs-1 mb-3" style="color: var(--accent-pink);" aria-hidden="true"></i>
                     <h2 class="fs-5 fw-bold mb-3">Nossos Valores</h2>
                     <p class="text-muted small mb-0">
                         Confiança nas relações, segurança total dos veículos, transparência na negociação e respeito ao cliente.
@@ -120,11 +161,6 @@
     </section>
     
     <footer role="contentinfo" class="rodape-site mt-5"></footer>
-
-    <!-- Botão Flutuante do WhatsApp -->
-    <a href="#" class="btn-whatsapp-flutuante" aria-label="Falar com vendedor no WhatsApp">
-        <i class="bi bi-whatsapp"></i>
-    </a>
 
 </body>
 </html>

@@ -9,16 +9,64 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/script.js" defer></script>
     
     <title>Marketplace de Veículos</title>
 </head>
 <body>
-    <header role="banner"></header>
+    <div class="header-wrapper">
+    
+        <div class="accessibility-bar d-flex justify-content-end align-items-center px-4" aria-label="Menu de acessibilidade">
+            <span class="me-3 small text-muted d-none d-sm-inline">Acessibilidade:</span>
+            <button class="acc-btn" onclick="ajustarFonte(1)" aria-label="Aumentar tamanho da fonte">A+</button>
+            <button class="acc-btn" onclick="ajustarFonte(-1)" aria-label="Diminuir tamanho da fonte">A-</button>
+            <button class="acc-btn" onclick="toggleContraste()" aria-label="Alternar alto contraste">
+                <i class="bi bi-circle-half" aria-hidden="true"></i> Contraste
+            </button>
+        </div>
+    
+        <header class="topbar" role="banner">
+            
+            <div class="topbar-brand">
+                <div class="brand-logo" aria-hidden="true">
+                    <i class="bi bi-car-front-fill"></i>
+                </div>
+                <div class="brand-title d-none d-sm-block ms-2">Auto Leste</div>
+            </div>
+    
+            <nav class="topbar-nav d-none d-lg-flex ms-auto" aria-label="Navegação principal">
+                <a href="index.html" class="topnav-link active">
+                    <i class="bi bi-house-door" aria-hidden="true"></i> <span>Home</span>
+                </a>
+                <a href="marketplace.html" class="topnav-link">
+                    <i class="bi bi-car-front" aria-hidden="true"></i> <span>Marketplace</span>
+                </a>
+                <a href="cadastrar-veiculo.html" class="topnav-link">
+                    <i class="bi bi-plus-circle" aria-hidden="true"></i> <span>Cadastrar Veículo</span>
+                </a>
+                <a href="sobre.html" class="topnav-link">
+                    <i class="bi bi-info-circle" aria-hidden="true"></i> <span>Sobre</span>
+                </a>
+            </nav>
+    
+            <button class="hamburger-btn d-lg-none ms-auto" type="button" aria-label="Abrir menu de navegação" onclick="toggleMobileMenu()">
+                <span></span><span></span><span></span>
+            </button>
+    
+        </header>
+    
+        <nav class="mobile-menu d-lg-none" id="mobileMenu" aria-label="Navegação mobile">
+            <a href="index.html" class="mobile-link active"><i class="bi bi-house-door"></i> Home</a>
+            <a href="marketplace.html" class="mobile-link"><i class="bi bi-car-front"></i> Marketplace</a>
+            <a href="cadastrar-veiculo.html" class="mobile-link"><i class="bi bi-plus-circle"></i> Cadastrar Veículo</a>
+            <a href="sobre.html" class="mobile-link"><i class="bi bi-info-circle"></i> Sobre Nós</a>
+        </nav>
+    </div>
     
     <main class="container-fluid px-4 my-4" role="main">
         <form aria-label="Busca e filtros de veículos">
             
-            <section class="bg-light p-4 rounded-3 mb-4 border" aria-labelledby="titulo-busca">
+            <section class="dash-section p-4 mb-4" aria-labelledby="titulo-busca">
                 <div class="text-center mb-4">
                     <h1 id="titulo-busca" class="h3 fw-bold mb-1">Encontre seu carro ideal</h1>
                     <p class="text-muted small">Compare ofertas de lojas de todo o Brasil e faça o melhor negócio.</p>
@@ -27,11 +75,11 @@
                 <div class="row g-2 justify-content-center align-items-end mb-4">
                     <div class="col-md-3">
                         <label for="busca-marca-topo" class="form-label small text-muted mb-1">Marca ou Modelo</label>
-                        <input type="text" id="busca-marca-topo" class="form-control" placeholder="Ex.: Toyota Corolla">
+                        <input type="text" id="busca-marca-topo" class="form-control dash-input" placeholder="Ex.: Toyota Corolla">
                     </div>
                     <div class="col-md-2">
                         <label for="busca-preco-topo" class="form-label small text-muted mb-1">Faixa de Preço</label>
-                        <select id="busca-preco-topo" class="form-select">
+                        <select id="busca-preco-topo" class="form-select dash-input">
                             <option>Selecione</option>
                             <option>Abaixo de R$ 5.000</option>
                             <option>R$ 5.000 a R$ 10.000</option>
@@ -44,7 +92,7 @@
                     </div>
                     <div class="col-md-2">
                         <label for="busca-regiao-topo" class="form-label small text-muted mb-1">Região</label>
-                        <select id="busca-regiao-topo" class="form-select">
+                        <select id="busca-regiao-topo" class="form-select dash-input">
                             <option>Selecione</option>
                             <option>Sul</option>
                             <option>Sudeste</option>
@@ -55,46 +103,42 @@
                     </div>
                     <div class="col-md-1">
                         <label for="busca-ano-de-topo" class="form-label small text-muted mb-1">Ano</label>
-                        <select id="busca-ano-de-topo" class="form-select" aria-label="Ano inicial">
+                        <select id="busca-ano-de-topo" class="form-select dash-input" aria-label="Ano inicial">
                             <option>De</option>
-                            <option>1960</option>
-                            <option>1970</option>
                             <option>1980</option>
                             <option>1990</option>
                             <option>2000</option>
                             <option>2010</option>
-                            <option>2015</option>
                             <option>2020</option>
-                            <option>2025</option>
+                            <option>2022</option>
+                            <option>2024</option>
                             <option>2026</option>
                         </select>
                     </div>
                     <div class="col-md-1">
                         <label for="busca-ano-ate-topo" class="form-label mb-1 visually-hidden">Ano final</label>
-                        <select id="busca-ano-ate-topo" class="form-select" aria-label="Ano final">
+                        <select id="busca-ano-ate-topo" class="form-select dash-input" aria-label="Ano final">
                             <option>Até</option>
-                            <option>1960</option>
-                            <option>1970</option>
                             <option>1980</option>
                             <option>1990</option>
                             <option>2000</option>
                             <option>2010</option>
-                            <option>2015</option>
                             <option>2020</option>
-                            <option>2025</option>
+                            <option>2022</option>
+                            <option>2024</option>
                             <option>2026</option>
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <button type="button" class="btn btn-dark w-100">Buscar</button>
+                        <button type="button" class="btn dash-btn w-100">Buscar</button>
                     </div>
                 </div>
 
                 <div class="d-flex justify-content-center gap-4 text-muted small" aria-hidden="true">
-                    <span>🛡️ Veículos confiáveis</span>
-                    <span>🏷️ Compare preços</span>
-                    <span>📍 Ofertas do Brasil</span>
-                    <span>🔒 Negociação segura</span>
+                    <span><i class="bi bi-shield-check me-1"></i>Veículos confiáveis</span>
+                    <span><i class="bi bi-tags me-1"></i>Compare preços</span>
+                    <span><i class="bi bi-map me-1"></i>Ofertas do Brasil</span>
+                    <span><i class="bi bi-lock me-1"></i>Negociação segura</span>
                 </div>
             </section>
 
@@ -103,15 +147,15 @@
                 <aside class="col-lg-3 mb-4" aria-labelledby="titulo-filtros">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h2 id="titulo-filtros" class="h6 fw-bold mb-0">Filtros</h2>
-                        <button type="reset" class="btn btn-link text-decoration-underline text-dark small p-0 border-0 shadow-none" aria-label="Limpar todos os filtros">Limpar tudo</button>
+                        <button type="reset" class="btn btn-link text-decoration-underline text-muted small p-0 border-0 shadow-none" aria-label="Limpar todos os filtros">Limpar tudo</button>
                     </div>
 
-                    <div class="mb-3 pb-3 border-bottom">
+                    <div class="mb-3 pb-3 border-bottom border-secondary">
                         <div class="d-flex justify-content-between mb-2">
                             <span class="fw-bold small" id="label-marca-lateral">Marca</span>
-                            <span aria-hidden="true">⌃</span>
+                            <i class="bi bi-chevron-down" aria-hidden="true"></i>
                         </div>
-                        <input type="text" id="busca-marca-lateral" class="form-control form-control-sm mb-2" placeholder="Buscar marca" aria-labelledby="label-marca-lateral">
+                        <input type="text" id="busca-marca-lateral" class="form-control form-control-sm mb-2 dash-input" placeholder="Buscar marca" aria-labelledby="label-marca-lateral">
                         
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="marca-vw">
@@ -135,79 +179,75 @@
                         </div>
                     </div>
 
-                    <div class="mb-3 pb-3 border-bottom">
+                    <div class="mb-3 pb-3 border-bottom border-secondary">
                         <div class="d-flex justify-content-between mb-2">
                             <span class="fw-bold small">Preço (R$)</span>
-                            <span aria-hidden="true">⌃</span>
+                            <i class="bi bi-chevron-down" aria-hidden="true"></i>
                         </div>
                         <div class="row g-2">
                             <div class="col-6">
-                                <input type="number" class="form-control form-control-sm" placeholder="Mínimo">
+                                <input type="number" class="form-control form-control-sm dash-input" placeholder="Mínimo" min="0" aria-label="Preço Mínimo">
                             </div>
                             <div class="col-6">
-                                <input type="number" class="form-control form-control-sm" placeholder="Máximo">
+                                <input type="number" class="form-control form-control-sm dash-input" placeholder="Máximo" min="0" aria-label="Preço Máximo">
                             </div>
                         </div>
                     </div>
 
-                    <div class="mb-3 pb-3 border-bottom">
+                    <div class="mb-3 pb-3 border-bottom border-secondary">
                         <div class="d-flex justify-content-between mb-2">
                             <span class="fw-bold small">Ano</span>
-                            <span aria-hidden="true">⌃</span>
+                            <i class="bi bi-chevron-down" aria-hidden="true"></i>
                         </div>
                         <div class="row g-2">
                             <div class="col-6">
-                                <select class="form-select form-select-sm">
+                                <select class="form-select form-select-sm dash-input" aria-label="Ano inicial">
                                     <option>De</option>
-                                    <option>1960</option>
-                                    <option>1970</option>
                                     <option>1980</option>
                                     <option>1990</option>
                                     <option>2000</option>
                                     <option>2010</option>
-                                    <option>2015</option>
                                     <option>2020</option>
-                                    <option>2025</option>
+                                    <option>2022</option>
+                                    <option>2024</option>
                                     <option>2026</option>
                                 </select>
                             </div>
                             <div class="col-6">
-                                <select class="form-select form-select-sm">
+                                <select class="form-select form-select-sm dash-input" aria-label="Ano final">
                                     <option>Até</option>
-                                    <option>1960</option>
-                                    <option>1970</option>
                                     <option>1980</option>
                                     <option>1990</option>
                                     <option>2000</option>
                                     <option>2010</option>
-                                    <option>2015</option>
                                     <option>2020</option>
-                                    <option>2025</option>
+                                    <option>2022</option>
+                                    <option>2024</option>
                                     <option>2026</option>
                                 </select>
                             </div>
                         </div>
                     </div>
 
-                    <div class="mb-3 pb-3 border-bottom">
+                    <div class="mb-3 pb-3 border-bottom border-secondary">
                         <div class="d-flex justify-content-between mb-2">
                             <span class="fw-bold small">Quilometragem (km)</span>
-                            <span aria-hidden="true">⌃</span>
+                            <i class="bi bi-chevron-down" aria-hidden="true"></i>
                         </div>
                         <div class="row g-2">
                             <div class="col-6">
-                                <input type="number" min="0" class="form-control form-control-sm" placeholder="Mínimo">
+                                <input type="number" class="form-control form-control-sm dash-input" placeholder="Mínimo" min="0" aria-label="Quilometragem Mínima">
                             </div>
                             <div class="col-6">
-                                <input type="number" class="form-control form-control-sm" placeholder="Máximo">
+                                <input type="number" class="form-control form-control-sm dash-input" placeholder="Máximo" min="0" aria-label="Quilometragem Máxima">
                             </div>
                         </div>
                     </div>
 
-                    <div class="mb-3 pb-3 border-bottom">
+                    <div class="mb-3 pb-3 border-bottom border-secondary">
                         <div class="d-flex justify-content-between mb-2">
                             <span class="fw-bold small">Câmbio</span>
-                            <span aria-hidden="true">⌃</span>
+                            <i class="bi bi-chevron-down" aria-hidden="true"></i>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="cambio-auto">
@@ -222,7 +262,7 @@
                     <div class="mb-3">
                         <div class="d-flex justify-content-between mb-2">
                             <span class="fw-bold small">Combustível</span>
-                            <span aria-hidden="true">⌃</span>
+                            <i class="bi bi-chevron-down" aria-hidden="true"></i>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="comb-flex">
@@ -242,19 +282,24 @@
                         </div>
                     </div>
                 </aside>
+
                 <section class="col-lg-9" aria-labelledby="titulo-resultados">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h2 id="titulo-resultados" class="small fw-normal mb-0">1.248 resultados encontrados</h2>
                         <div class="d-flex align-items-center gap-2">
                             <label for="ordenacao" class="small mb-0">Ordenar por:</label>
-                            <select id="ordenacao" class="form-select form-select-sm w-auto">
+                            <select id="ordenacao" class="form-select form-select-sm w-auto dash-input">
                                 <option>Mais relevantes</option>
                                 <option>Menor preço</option>
                                 <option>Maior preço</option>
                             </select>
                             <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary active">🔲</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">📄</button>
+                                <button type="button" class="btn btn-sm dash-btn-outline active" aria-label="Visualizar em grade">
+                                    <i class="bi bi-grid" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" class="btn btn-sm dash-btn-outline" aria-label="Visualizar em lista">
+                                    <i class="bi bi-list-ul" aria-hidden="true"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -262,160 +307,176 @@
                     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-3">
                         
                         <div class="col">
-                            <article class="card h-100 rounded-3 shadow-sm">
+                            <article class="dash-card h-100">
                                 <div class="position-relative">
-                                    <img src="./img/corolla_formatado.png" class="card-img-top rounded-top-3 img-carro" alt="Sedan Toyota Corolla XEi 2.0 prata, visto de frente e na diagonal sobre fundo cinza">
-                                    <button type="button" class="btn btn-light btn-sm position-absolute top-0 end-0 m-2 rounded-circle border-0" aria-label="Favoritar Toyota Corolla">♡</button>
+                                    <img src="./img/corolla_formatado.png" class="img-carro" alt="Um Toyota Corolla prata, carro sedan de quatro portas, em vista frontal e lateral (três-quartos).">
+                                    <button type="button" class="btn dash-btn-icon position-absolute top-0 end-0 m-2 rounded-circle" aria-label="Favoritar Toyota Corolla">
+                                        <i class="bi bi-heart" aria-hidden="true"></i>
+                                    </button>
                                 </div>
                                 <div class="card-body p-3">
                                     <h3 class="h6 fw-bold mb-0">Toyota Corolla XEi 2.0</h3>
                                     <p class="text-muted mb-1" style="font-size: 0.75rem;"><span class="visually-hidden">Ano de fabricação: </span>2020/2020</p>
                                     <p class="h5 fw-bold mb-3">R$ 96.900</p>
                                     <div class="text-muted" style="font-size: 0.75rem;">
-                                        <span>🚗 48.000 km | ⛽ Flex</span><br>
-                                        <span>📍 São Paulo - SP</span><br>
-                                        <hr class="my-2">
-                                        <span>🏪 Auto Norte Multimarcas</span>
+                                        <span><i class="bi bi-speedometer2" aria-hidden="true"></i> 48.000 km | <i class="bi bi-fuel-pump" aria-hidden="true"></i> Flex</span><br>
+                                        <span><i class="bi bi-geo-alt" aria-hidden="true"></i> São Paulo - SP</span><br>
+                                        <hr class="my-2 border-secondary">
+                                        <span><i class="bi bi-shop" aria-hidden="true"></i> Auto Norte Multimarcas</span>
                                     </div>
                                 </div>
                             </article>
                         </div>
 
                         <div class="col">
-                            <article class="card h-100 rounded-3 shadow-sm">
+                            <article class="dash-card h-100">
                                 <div class="position-relative">
-                                    <img src="./img/honda_civic_formatado.png" class="card-img-top rounded-top-3 img-carro" alt="Sedan Honda Civic EXL 2.0 azul escuro, visto de frente e na diagonal sobre fundo cinza">
-                                    <button type="button" class="btn btn-light btn-sm position-absolute top-0 end-0 m-2 rounded-circle border-0" aria-label="Favoritar Honda Civic">♡</button>
+                                    <img src="./img/honda_civic_formatado.png" class="img-carro" alt="Um Honda Civic azul marinho, carro sedan de quatro portas, em vista frontal e lateral (três-quartos).">
+                                    <button type="button" class="btn dash-btn-icon position-absolute top-0 end-0 m-2 rounded-circle" aria-label="Favoritar Honda Civic">
+                                        <i class="bi bi-heart" aria-hidden="true"></i>
+                                    </button>
                                 </div>
                                 <div class="card-body p-3">
                                     <h3 class="h6 fw-bold mb-0">Honda Civic EXL 2.0</h3>
                                     <p class="text-muted mb-1" style="font-size: 0.75rem;"><span class="visually-hidden">Ano de fabricação: </span>2019/2019</p>
                                     <p class="h5 fw-bold mb-3">R$ 104.900</p>
                                     <div class="text-muted" style="font-size: 0.75rem;">
-                                        <span>🚗 62.000 km | ⛽ Flex</span><br>
-                                        <span>📍 Campinas - SP</span><br>
-                                        <hr class="my-2">
-                                        <span>🏪 Prime Motors</span>
+                                        <span><i class="bi bi-speedometer2" aria-hidden="true"></i> 62.000 km | <i class="bi bi-fuel-pump" aria-hidden="true"></i> Flex</span><br>
+                                        <span><i class="bi bi-geo-alt" aria-hidden="true"></i> Campinas - SP</span><br>
+                                        <hr class="my-2 border-secondary">
+                                        <span><i class="bi bi-shop" aria-hidden="true"></i> Prime Motors</span>
                                     </div>
                                 </div>
                             </article>
                         </div>
 
                         <div class="col">
-                            <article class="card h-100 rounded-3 shadow-sm">
+                            <article class="dash-card h-100">
                                 <div class="position-relative">
-                                    <img src="./img/jeep_formatado.png" class="card-img-top rounded-top-3 img-carro" alt="SUV Jeep Compass Limited 2.0 vermelho, visto de frente e na diagonal sobre fundo cinza">
-                                    <button type="button" class="btn btn-light btn-sm position-absolute top-0 end-0 m-2 rounded-circle border-0" aria-label="Favoritar Jeep Compass">♡</button>
+                                    <img src="./img/jeep_formatado.png" class="img-carro" alt="Um Jeep Compass vermelho, SUV de quatro portas, em vista frontal e lateral (três-quartos).">
+                                    <button type="button" class="btn dash-btn-icon position-absolute top-0 end-0 m-2 rounded-circle" aria-label="Favoritar Jeep Compass">
+                                        <i class="bi bi-heart" aria-hidden="true"></i>
+                                    </button>
                                 </div>
                                 <div class="card-body p-3">
                                     <h3 class="h6 fw-bold mb-0">Jeep Compass Limited 2.0</h3>
                                     <p class="text-muted mb-1" style="font-size: 0.75rem;"><span class="visually-hidden">Ano de fabricação: </span>2021/2021</p>
                                     <p class="h5 fw-bold mb-3">R$ 129.900</p>
                                     <div class="text-muted" style="font-size: 0.75rem;">
-                                        <span>🚗 35.000 km | ⛽ Diesel</span><br>
-                                        <span>📍 Belo Horizonte - MG</span><br>
-                                        <hr class="my-2">
-                                        <span>🏪 BH Motors</span>
+                                        <span><i class="bi bi-speedometer2" aria-hidden="true"></i> 35.000 km | <i class="bi bi-fuel-pump" aria-hidden="true"></i> Diesel</span><br>
+                                        <span><i class="bi bi-geo-alt" aria-hidden="true"></i> Belo Horizonte - MG</span><br>
+                                        <hr class="my-2 border-secondary">
+                                        <span><i class="bi bi-shop" aria-hidden="true"></i> BH Motors</span>
                                     </div>
                                 </div>
                             </article>
                         </div>
 
                         <div class="col">
-                            <article class="card h-100 rounded-3 shadow-sm">
+                            <article class="dash-card h-100">
                                 <div class="position-relative">
-                                    <img src="./img/volkswagen_formatado.png" class="card-img-top rounded-top-3 img-carro" alt="SUV Volkswagen T-Cross 200 TSI preto, visto de frente e na diagonal sobre fundo cinza">
-                                    <button type="button" class="btn btn-light btn-sm position-absolute top-0 end-0 m-2 rounded-circle border-0" aria-label="Favoritar Volkswagen T-Cross">♡</button>
+                                    <img src="./img/volkswagen_formatado.png" class="img-carro" alt="Um Volkswagen T-Cross preto, SUV compacto de quatro portas, em vista frontal e lateral (três-quartos).">
+                                    <button type="button" class="btn dash-btn-icon position-absolute top-0 end-0 m-2 rounded-circle" aria-label="Favoritar Volkswagen T-Cross">
+                                        <i class="bi bi-heart" aria-hidden="true"></i>
+                                    </button>
                                 </div>
                                 <div class="card-body p-3">
                                     <h3 class="h6 fw-bold mb-0">Volkswagen T-Cross 200 TSI</h3>
                                     <p class="text-muted mb-1" style="font-size: 0.75rem;"><span class="visually-hidden">Ano de fabricação: </span>2020/2021</p>
                                     <p class="h5 fw-bold mb-3">R$ 84.900</p>
                                     <div class="text-muted" style="font-size: 0.75rem;">
-                                        <span>🚗 41.000 km | ⛽ Flex</span><br>
-                                        <span>📍 Curitiba - PR</span><br>
-                                        <hr class="my-2">
-                                        <span>🏪 Via Sul Veículos</span>
+                                        <span><i class="bi bi-speedometer2" aria-hidden="true"></i> 41.000 km | <i class="bi bi-fuel-pump" aria-hidden="true"></i> Flex</span><br>
+                                        <span><i class="bi bi-geo-alt" aria-hidden="true"></i> Curitiba - PR</span><br>
+                                        <hr class="my-2 border-secondary">
+                                        <span><i class="bi bi-shop" aria-hidden="true"></i> Via Sul Veículos</span>
                                     </div>
                                 </div>
                             </article>
                         </div>
 
                         <div class="col">
-                            <article class="card h-100 rounded-3 shadow-sm">
+                            <article class="dash-card h-100">
                                 <div class="position-relative">
-                                    <img src="./img/fiat_toro_formatado.png" class="card-img-top rounded-top-3 img-carro" alt="Picape Fiat Toro Volcano 2.0 4x4 prata, vista de frente e na diagonal sobre fundo cinza">
-                                    <button type="button" class="btn btn-light btn-sm position-absolute top-0 end-0 m-2 rounded-circle border-0" aria-label="Favoritar Fiat Toro">♡</button>
+                                    <img src="./img/fiat_toro_formatado.png" class="img-carro" alt="Uma picape Fiat Toro preta, de quatro portas, em vista frontal e lateral (três-quartos).">
+                                    <button type="button" class="btn dash-btn-icon position-absolute top-0 end-0 m-2 rounded-circle" aria-label="Favoritar Fiat Toro">
+                                        <i class="bi bi-heart" aria-hidden="true"></i>
+                                    </button>
                                 </div>
                                 <div class="card-body p-3">
                                     <h3 class="h6 fw-bold mb-0">Fiat Toro Volcano 2.0 4x4</h3>
                                     <p class="text-muted mb-1" style="font-size: 0.75rem;"><span class="visually-hidden">Ano de fabricação: </span>2021/2021</p>
                                     <p class="h5 fw-bold mb-3">R$ 119.900</p>
                                     <div class="text-muted" style="font-size: 0.75rem;">
-                                        <span>🚗 25.000 km | ⛽ Diesel</span><br>
-                                        <span>📍 Goiânia - GO</span><br>
-                                        <hr class="my-2">
-                                        <span>🏪 Rota Automóveis</span>
+                                        <span><i class="bi bi-speedometer2" aria-hidden="true"></i> 25.000 km | <i class="bi bi-fuel-pump" aria-hidden="true"></i> Diesel</span><br>
+                                        <span><i class="bi bi-geo-alt" aria-hidden="true"></i> Goiânia - GO</span><br>
+                                        <hr class="my-2 border-secondary">
+                                        <span><i class="bi bi-shop" aria-hidden="true"></i> Rota Automóveis</span>
                                     </div>
                                 </div>
                             </article>
                         </div>
 
                         <div class="col">
-                            <article class="card h-100 rounded-3 shadow-sm">
+                            <article class="dash-card h-100">
                                 <div class="position-relative">
-                                    <img src="./img/chevrolet_onix_formatado.png" class="card-img-top rounded-top-3 img-carro" alt="Sedan Chevrolet Onix Plus LT 1.0 preto, visto de frente e na diagonal sobre fundo cinza">
-                                    <button type="button" class="btn btn-light btn-sm position-absolute top-0 end-0 m-2 rounded-circle border-0" aria-label="Favoritar Chevrolet Onix">♡</button>
+                                    <img src="./img/chevrolet_onix_formatado.png" class="img-carro" alt="Um Chevrolet Onix Plus preto, carro sedan de quatro portas, em vista frontal e lateral (três-quartos).">
+                                    <button type="button" class="btn dash-btn-icon position-absolute top-0 end-0 m-2 rounded-circle" aria-label="Favoritar Chevrolet Onix">
+                                        <i class="bi bi-heart" aria-hidden="true"></i>
+                                    </button>
                                 </div>
                                 <div class="card-body p-3">
                                     <h3 class="h6 fw-bold mb-0">Chevrolet Onix Plus LT 1.0</h3>
                                     <p class="text-muted mb-1" style="font-size: 0.75rem;"><span class="visually-hidden">Ano de fabricação: </span>2020/2021</p>
                                     <p class="h5 fw-bold mb-3">R$ 59.900</p>
                                     <div class="text-muted" style="font-size: 0.75rem;">
-                                        <span>🚗 55.000 km | ⛽ Flex</span><br>
-                                        <span>📍 Porto Alegre - RS</span><br>
-                                        <hr class="my-2">
-                                        <span>🏪 Sul Carros</span>
+                                        <span><i class="bi bi-speedometer2" aria-hidden="true"></i> 55.000 km | <i class="bi bi-fuel-pump" aria-hidden="true"></i> Flex</span><br>
+                                        <span><i class="bi bi-geo-alt" aria-hidden="true"></i> Porto Alegre - RS</span><br>
+                                        <hr class="my-2 border-secondary">
+                                        <span><i class="bi bi-shop" aria-hidden="true"></i> Sul Carros</span>
                                     </div>
                                 </div>
                             </article>
                         </div>
 
                         <div class="col">
-                            <article class="card h-100 rounded-3 shadow-sm">
+                            <article class="dash-card h-100">
                                 <div class="position-relative">
-                                    <img src="./img/hyundai_creta_formatado.png" class="card-img-top rounded-top-3 img-carro" alt="SUV Hyundai Creta Pulse 1.6 azul, visto de frente e na diagonal sobre fundo cinza">
-                                    <button type="button" class="btn btn-light btn-sm position-absolute top-0 end-0 m-2 rounded-circle border-0" aria-label="Favoritar Hyundai Creta">♡</button>
+                                    <img src="./img/hyundai_creta_formatado.png" class="img-carro" alt="Um Hyundai Creta azul, SUV compacto de quatro portas, em vista frontal e lateral (três-quartos).">
+                                    <button type="button" class="btn dash-btn-icon position-absolute top-0 end-0 m-2 rounded-circle" aria-label="Favoritar Hyundai Creta">
+                                        <i class="bi bi-heart" aria-hidden="true"></i>
+                                    </button>
                                 </div>
                                 <div class="card-body p-3">
                                     <h3 class="h6 fw-bold mb-0">Hyundai Creta Pulse 1.6</h3>
                                     <p class="text-muted mb-1" style="font-size: 0.75rem;"><span class="visually-hidden">Ano de fabricação: </span>2020/2020</p>
                                     <p class="h5 fw-bold mb-3">R$ 79.900</p>
                                     <div class="text-muted" style="font-size: 0.75rem;">
-                                        <span>🚗 38.000 km | ⛽ Flex</span><br>
-                                        <span>📍 Rio de Janeiro - RJ</span><br>
-                                        <hr class="my-2">
-                                        <span>🏪 Carioca Motors</span>
+                                        <span><i class="bi bi-speedometer2" aria-hidden="true"></i> 38.000 km | <i class="bi bi-fuel-pump" aria-hidden="true"></i> Flex</span><br>
+                                        <span><i class="bi bi-geo-alt" aria-hidden="true"></i> Rio de Janeiro - RJ</span><br>
+                                        <hr class="my-2 border-secondary">
+                                        <span><i class="bi bi-shop" aria-hidden="true"></i> Carioca Motors</span>
                                     </div>
                                 </div>
                             </article>
                         </div>
 
                         <div class="col">
-                            <article class="card h-100 rounded-3 shadow-sm">
+                            <article class="dash-card h-100">
                                 <div class="position-relative">
-                                    <img src="./img/nissan_kicks_formatado.png" class="card-img-top rounded-top-3 img-carro" alt="SUV Nissan Kicks SV 1.6 branco com teto preto, visto de frente e na diagonal sobre fundo cinza">
-                                    <button type="button" class="btn btn-light btn-sm position-absolute top-0 end-0 m-2 rounded-circle border-0" aria-label="Favoritar Nissan Kicks">♡</button>
+                                    <img src="./img/nissan_kicks_formatado.png" class="img-carro" alt="Um Nissan Kicks branco bicolor com teto preto, SUV compacto de quatro portas, em vista frontal e lateral (três-quartos).">
+                                    <button type="button" class="btn dash-btn-icon position-absolute top-0 end-0 m-2 rounded-circle" aria-label="Favoritar Nissan Kicks">
+                                        <i class="bi bi-heart" aria-hidden="true"></i>
+                                    </button>
                                 </div>
                                 <div class="card-body p-3">
                                     <h3 class="h6 fw-bold mb-0">Nissan Kicks SV 1.6</h3>
                                     <p class="text-muted mb-1" style="font-size: 0.75rem;"><span class="visually-hidden">Ano de fabricação: </span>2019/2020</p>
                                     <p class="h5 fw-bold mb-3">R$ 69.900</p>
                                     <div class="text-muted" style="font-size: 0.75rem;">
-                                        <span>🚗 70.000 km | ⛽ Flex</span><br>
-                                        <span>📍 Salvador - BA</span><br>
-                                        <hr class="my-2">
-                                        <span>🏪 Bahia Veículos</span>
+                                        <span><i class="bi bi-speedometer2" aria-hidden="true"></i> 70.000 km | <i class="bi bi-fuel-pump" aria-hidden="true"></i> Flex</span><br>
+                                        <span><i class="bi bi-geo-alt" aria-hidden="true"></i> Salvador - BA</span><br>
+                                        <hr class="my-2 border-secondary">
+                                        <span><i class="bi bi-shop" aria-hidden="true"></i> Bahia Veículos</span>
                                     </div>
                                 </div>
                             </article>
@@ -429,5 +490,4 @@
     
     <footer role="contentinfo" class="rodape-site"></footer>
 </body>
-
 </html>
