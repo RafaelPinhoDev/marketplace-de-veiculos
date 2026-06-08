@@ -86,3 +86,46 @@
       btn.textContent = 'Desativado';
     });
   });
+
+  /* ════════════════════════════════
+   ACESSIBILIDADE
+════════════════════════════════ */
+const FONTE_MIN   = 12;
+const FONTE_MAX   = 22;
+const FONTE_PASSO = 2;
+
+let fonteAtual = parseInt(localStorage.getItem('al_fonte')) || 16;
+document.documentElement.style.fontSize = fonteAtual + 'px';
+
+function aumentarFonte() {
+  if (fonteAtual >= FONTE_MAX) return;
+  fonteAtual += FONTE_PASSO;
+  document.documentElement.style.fontSize = fonteAtual + 'px';
+  localStorage.setItem('al_fonte', fonteAtual);
+}
+
+function diminuirFonte() {
+  if (fonteAtual <= FONTE_MIN) return;
+  fonteAtual -= FONTE_PASSO;
+  document.documentElement.style.fontSize = fonteAtual + 'px';
+  localStorage.setItem('al_fonte', fonteAtual);
+}
+
+function alternarContraste() {
+  const ativo = document.body.classList.toggle('alto-contraste');
+  localStorage.setItem('al_contraste', ativo ? '1' : '0');
+
+  // Atualiza aria-pressed no botão
+  const btn = document.getElementById('btnContraste');
+  if (btn) btn.setAttribute('aria-pressed', String(ativo));
+}
+
+// Restaurar preferências ao carregar
+(function restaurarPreferencias() {
+  if (localStorage.getItem('al_contraste') === '1') {
+    document.body.classList.add('alto-contraste');
+    const btn = document.getElementById('btnContraste');
+    if (btn) btn.setAttribute('aria-pressed', 'true');
+  }
+})();
+  

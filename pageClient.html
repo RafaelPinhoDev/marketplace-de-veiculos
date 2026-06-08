@@ -11,11 +11,13 @@
 </head>
 <body>
 <header class="topbar" role="banner">
-  <button class="hamburger-btn" id="hamburgerBtn"
+  <button type="button" class="hamburger-btn" id="hamburgerBtn"
     aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileNavDrawer"
     onclick="toggleMobileNav()">
     <span></span><span></span><span></span>
   </button>
+ 
+  <!-- Brand -->
   <div class="topbar-brand">
     <div class="brand-logo" aria-hidden="true">
       <i class="bi bi-car-front"></i>
@@ -25,6 +27,8 @@
       <div class="brand-sub">Agência</div>
     </div>
   </div>
+ 
+  <!-- Nav desktop -->
   <nav class="topbar-nav" aria-label="Navegação principal">
     <a href="index.html" class="topnav-link active" aria-current="page" title="Meu Estoque">
       <i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>
@@ -33,19 +37,27 @@
     <a href="#" class="topnav-link" title="Mensagens">
       <i class="bi bi-chat-dots" aria-hidden="true"></i>
       <span>Mensagens</span>
-      <span class="badge-notif" aria-label="3 mensagens não lidas">3</span>
+     <span class="badge-notif" role="status" aria-live="polite" aria-label="3 mensagens não lidas">3</span>
     </a>
     <a href="#" class="topnav-link" title="Meu Perfil">
       <i class="bi bi-person-circle" aria-hidden="true"></i>
       <span>Meu Perfil</span>
     </a>
     <div class="topbar-divider" aria-hidden="true"></div>
-    <a href="./index.html" class="topnav-link sair" title="Sair">
+    <div class="acessibilidade" role="group" aria-label="Ferramentas de acessibilidade">
+      <button type="button" class="acesso-btn" onclick="aumentarFonte()" aria-label="Aumentar tamanho da fonte" title="Aumentar fonte">A+</button>
+      <button type="button" class="acesso-btn" onclick="diminuirFonte()" aria-label="Diminuir tamanho da fonte" title="Diminuir fonte">A-</button>
+      <button type="button" class="acesso-btn" id="btnContraste" onclick="alternarContraste()" aria-label="Alternar alto contraste" aria-pressed="false" title="Alto contraste">◐</button>
+    </div>
+    <div class="topbar-divider" aria-hidden="true"></div>
+    <a href="#" class="topnav-link sair" title="Sair">
       <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
       <span>Sair</span>
     </a>
   </nav>
 </header>
+ 
+<!-- Nav mobile drawer -->
 <nav class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Menu mobile">
   <a href="index.html" class="mobile-nav-item active">
     <i class="bi bi-grid-3x3-gap"></i> Meu Estoque
@@ -61,33 +73,38 @@
     <i class="bi bi-box-arrow-right"></i> Sair
   </a>
 </nav>
+ 
+<!-- ══════════════════════════════════════
+     MAIN — sem sidebar lateral (margin-left: 0)
+══════════════════════════════════════ -->
 <main class="main" style="margin-left:0; max-width:1400px; margin-right:auto;" id="main-content">
+ 
+  <!-- Cabeçalho + CTA -->
   <div class="d-flex align-items-start justify-content-between gap-3 mb-4 flex-wrap">
     <div>
       <h1 class="page-title">Bem-vinda, Agência Auto Leste</h1>
       <p class="page-subtitle">Acompanhe o desempenho dos seus anúncios e gerencie seu estoque.</p>
     </div>
-   <button class="btn-primary-sm"
-        onclick="window.location.href='cadastroVeiculo.html'">
-    <i class="bi bi-plus-lg"></i> Cadastrar Veículo
-</button>
+    <button type="button" class="btn-primary-sm" onclick="abrirCadastro()" aria-label="Cadastrar novo veículo"
+      style="padding:10px 18px;font-size:13.5px;display:inline-flex;align-items:center;gap:8px;border-radius:10px;">
+      <i class="bi bi-plus-lg" aria-hidden="true"></i> Cadastrar Veículo
     </button>
   </div>
+ 
+  <!-- ── KPI Cards ── -->
   <div class="row g-3 mb-4" role="region" aria-label="Indicadores da agência">
-
+ 
     <div class="col-12 col-sm-6 col-xl-3">
       <article class="kpi-card" aria-label="Veículos Ativos">
         <div class="kpi-header">
-          <div class="vehicle-thumb">
-    <img src="./img/honda_civic.png" alt="Toyota Corolla XEi 2.0">
-</div>
+          <i class="bi bi-car-front" aria-hidden="true"></i> Veículos Ativos
         </div>
         <div class="kpi-value">8</div>
         <div class="kpi-delta" style="color:var(--text-muted)">de 15 disponíveis</div>
         <div class="kpi-delta down">7 pausados</div>
       </article>
     </div>
-
+ 
     <div class="col-12 col-sm-6 col-xl-3">
       <article class="kpi-card" aria-label="Visualizações no mês">
         <div class="kpi-header">
@@ -99,7 +116,7 @@
         </div>
       </article>
     </div>
-
+ 
     <div class="col-12 col-sm-6 col-xl-3">
       <article class="kpi-card" aria-label="Mensagens recebidas">
         <div class="kpi-header">
@@ -109,7 +126,7 @@
         <div class="kpi-delta down">3 não lidas</div>
       </article>
     </div>
-
+ 
     <div class="col-12 col-sm-6 col-xl-3">
       <article class="kpi-card" aria-label="Status do Plano">
         <div class="kpi-header">
@@ -121,28 +138,32 @@
         <div class="kpi-delta" style="color:var(--text-muted)">Renova em 15/06/2025</div>
       </article>
     </div>
+ 
   </div>
+ 
+  <!-- ── Layout principal: tabela + sidebar direita ── -->
   <div class="agency-layout">
-
+ 
     <!-- TABELA DE VEÍCULOS -->
     <section class="section-card" aria-labelledby="veiculos-heading">
-
+ 
       <div class="section-header d-flex align-items-center justify-content-between flex-wrap gap-2">
         <h2 class="section-title" id="veiculos-heading">Meus Veículos</h2>
         <span class="section-badge">8 ativos</span>
       </div>
+ 
       <!-- Toolbar -->
       <div class="table-toolbar">
         <div class="search-input-wrap" role="search">
           <i class="bi bi-search" aria-hidden="true"></i>
-          <input
-            type="search"
-            class="search-input"
-            id="buscaVeiculo"
-            placeholder="Buscar veículo"
-            aria-label="Buscar veículo"
-            oninput="filtrarTabela()"
-          />
+         <input
+              type="text"
+              class="search-input"
+              id="buscaVeiculo"
+              placeholder="Buscar veículo"
+              aria-label="Buscar veículo"
+              oninput="filtrarTabela()"
+            />
         </div>
         <div class="ms-auto d-flex gap-2 flex-wrap">
           <select class="filter-select" id="filtroStatus" aria-label="Filtrar por status" onchange="filtrarTabela()">
@@ -158,6 +179,7 @@
           </select>
         </div>
       </div>
+ 
       <!-- Tabela -->
       <div class="table-scroll">
         <table class="admin-table" id="tabelaVeiculos" aria-label="Lista de veículos">
@@ -172,12 +194,13 @@
             </tr>
           </thead>
           <tbody id="corpoTabela">
+ 
             <tr data-status="ativo" data-preco="96900" data-views="320" data-ts="8">
               <td>
                 <div class="d-flex align-items-center gap-3">
                <div class="vehicle-thumb">
-                <img src="./img/chevrolet_onix_formatado.png" alt="Toyota Corolla">
-             </div>
+    <img src="./img/chevrolet_onix_formatado.png" alt="Toyota Corolla">
+</div>
                   <div>
                     <div class="vehicle-name">Toyota Corolla XEi 2.0</div>
                     <div class="vehicle-sub">Flex · Automático</div>
@@ -190,18 +213,18 @@
               <td>320</td>
               <td>
                 <div class="actions-cell">
-                  <button class="btn-action" aria-label="Editar Toyota Corolla">Editar</button>
-                  <button class="btn-action btn-deactivate" aria-label="Pausar Toyota Corolla">Pausar</button>
-                  <button class="btn-more" aria-label="Mais opções Toyota Corolla"><i class="bi bi-three-dots-vertical"></i></button>
+                  <button type="button" class="btn-action" aria-label="Editar Toyota Corolla">Editar</button>
+                  <button type="button" class="btn-action btn-deactivate" aria-label="Pausar Toyota Corolla">Pausar</button>
                 </div>
               </td>
             </tr>
+ 
             <tr data-status="ativo" data-preco="104900" data-views="280" data-ts="7">
               <td>
                 <div class="d-flex align-items-center gap-3">
                  <div class="vehicle-thumb">
-                    <img src="./img/hyundai_creta_formatado.png" alt="Toyota Corolla XEi 2.0">
-               </div>
+    <img src="./img/corolla.jpg" alt="Toyota Corolla XEi 2.0">
+</div>
                   <div>
                     <div class="vehicle-name">Honda Civic EXL 2.0</div>
                     <div class="vehicle-sub">Flex · Automático</div>
@@ -214,18 +237,18 @@
               <td>280</td>
               <td>
                 <div class="actions-cell">
-                  <button class="btn-action" aria-label="Editar Honda Civic">Editar</button>
-                  <button class="btn-action btn-deactivate" aria-label="Pausar Honda Civic">Pausar</button>
-                  <button class="btn-more" aria-label="Mais opções Honda Civic"><i class="bi bi-three-dots-vertical"></i></button>
+                  <button type="button" class="btn-action" aria-label="Editar Honda Civic">Editar</button>
+                  <button type="button" class="btn-action btn-deactivate" aria-label="Pausar Honda Civic">Pausar</button>
                 </div>
               </td>
             </tr>
+ 
             <tr data-status="ativo" data-preco="129900" data-views="412" data-ts="6">
               <td>
                 <div class="d-flex align-items-center gap-3">
                   <div class="vehicle-thumb">
-                   <img src="./img/jeep_formatado.png" alt="Toyota Corolla XEi 2.0">
-                  </div>
+    <img src="./img/corolla.jpg" alt="Toyota Corolla XEi 2.0">
+</div>
                   <div>
                     <div class="vehicle-name">Jeep Compass Limited 2.0</div>
                     <div class="vehicle-sub">Diesel · Automático</div>
@@ -238,18 +261,18 @@
               <td>412</td>
               <td>
                 <div class="actions-cell">
-                  <button class="btn-action" aria-label="Editar Jeep Compass">Editar</button>
-                  <button class="btn-action btn-deactivate" aria-label="Pausar Jeep Compass">Pausar</button>
-                  <button class="btn-more" aria-label="Mais opções Jeep Compass"><i class="bi bi-three-dots-vertical"></i></button>
+                  <button type="button" class="btn-action" aria-label="Editar Jeep Compass">Editar</button>
+                  <button type="button" class="btn-action btn-deactivate" aria-label="Pausar Jeep Compass">Pausar</button>
                 </div>
               </td>
             </tr>
+ 
             <tr data-status="pausado" data-preco="84900" data-views="153" data-ts="5">
               <td>
                 <div class="d-flex align-items-center gap-3">
                   <div class="vehicle-thumb">
-                    <img src="./img/corolla_formatado.png" alt="Toyota Corolla XEi 2.0">
-                  </div>
+    <img src="./img/corolla.jpg" alt="Toyota Corolla XEi 2.0">
+</div>
                   <div>
                     <div class="vehicle-name">Volkswagen T-Cross 200 TSI</div>
                     <div class="vehicle-sub">Flex · Automático</div>
@@ -262,18 +285,18 @@
               <td>153</td>
               <td>
                 <div class="actions-cell">
-                  <button class="btn-action" aria-label="Editar VW T-Cross">Editar</button>
-                  <button class="btn-action btn-approve" aria-label="Ativar VW T-Cross">Ativar</button>
-                  <button class="btn-more" aria-label="Mais opções VW T-Cross"><i class="bi bi-three-dots-vertical"></i></button>
+                  <button type="button" class="btn-action" aria-label="Editar VW T-Cross">Editar</button>
+                  <button type="button" class="btn-action btn-approve" aria-label="Ativar VW T-Cross">Ativar</button>
                 </div>
               </td>
             </tr>
+ 
             <tr data-status="ativo" data-preco="119900" data-views="210" data-ts="4">
               <td>
                 <div class="d-flex align-items-center gap-3">
                   <div class="vehicle-thumb">
-                    <img src="./img/nissan_kicks_formatado.png" alt="Toyota Corolla XEi 2.0">
-                  </div>
+    <img src="./img/corolla.jpg" alt="Toyota Corolla XEi 2.0">
+</div>
                   <div>
                     <div class="vehicle-name">Fiat Toro Volcano 2.0 4x4</div>
                     <div class="vehicle-sub">Diesel · Automático</div>
@@ -286,19 +309,18 @@
               <td>210</td>
               <td>
                 <div class="actions-cell">
-                  <button class="btn-action" aria-label="Editar Fiat Toro">Editar</button>
-                  <button class="btn-action btn-deactivate" aria-label="Pausar Fiat Toro">Pausar</button>
-                  <button class="btn-more" aria-label="Mais opções Fiat Toro"><i class="bi bi-three-dots-vertical"></i></button>
+                  <button type="button" class="btn-action" aria-label="Editar Fiat Toro">Editar</button>
+                  <button type="button" class="btn-action btn-deactivate" aria-label="Pausar Fiat Toro">Pausar</button>
                 </div>
               </td>
             </tr>
-
+ 
             <tr data-status="pausado" data-preco="79900" data-views="98" data-ts="3">
               <td>
                 <div class="d-flex align-items-center gap-3">
                   <div class="vehicle-thumb">
-                    <img src="./img/volkswagen_formatado.png" alt="Toyota Corolla XEi 2.0">
-                  </div>
+    <img src="./img/corolla.jpg" alt="Toyota Corolla XEi 2.0">
+</div>
                   <div>
                     <div class="vehicle-name">Hyundai Creta Pulse 1.6</div>
                     <div class="vehicle-sub">Flex · Automático</div>
@@ -311,46 +333,21 @@
               <td>98</td>
               <td>
                 <div class="actions-cell">
-                  <button class="btn-action" aria-label="Editar Hyundai Creta">Editar</button>
-                  <button class="btn-action btn-approve" aria-label="Ativar Hyundai Creta">Ativar</button>
-                  <button class="btn-more" aria-label="Mais opções Hyundai Creta"><i class="bi bi-three-dots-vertical"></i></button>
+                  <button type="button" class="btn-action" aria-label="Editar Hyundai Creta">Editar</button>
+                  <button type="button" class="btn-action btn-approve" aria-label="Ativar Hyundai Creta">Ativar</button>
                 </div>
               </td>
             </tr>
+ 
             <tr data-status="ativo" data-preco="69900" data-views="175" data-ts="2">
               <td>
                 <div class="d-flex align-items-center gap-3">
                   <div class="vehicle-thumb">
-                    <img src="./img/opala.png" alt="Opala 67">
-                  </div>
-                   <div>
-                    <div class="vehicle-name">Opala 1967 8V</div>
-                    <div class="vehicle-sub">Flex · Manual</div>
-                  </div>
-                </div>
-              </td>
-              <td>2019/2020</td>
-              <td>R$ 69.900</td>
-              <td><span class="badge-status badge-ativo">Ativo</span></td>
-              <td>175</td>
-              <td>
-                <div class="actions-cell">
-                  <button class="btn-action" aria-label="Editar Nissan Kicks">Editar</button>
-                  <button class="btn-action btn-deactivate" aria-label="Pausar Nissan Kicks">Pausar</button>
-                  <button class="btn-more" aria-label="Mais opções Nissan Kicks"><i class="bi bi-three-dots-vertical"></i></button>
-                </div>
-              </td>
-            </tr>
-            <tr data-status="ativo" data-preco="69900" data-views="175" data-ts="2">
-              <td>
-                <div class="d-flex align-items-center gap-3">
-                  <div class="vehicle-thumb">
-                   <img src="./img/maverick.png" alt="Maverick 253 CV">
-                    </div>
+    <img src="./img/corolla.jpg" alt="Toyota Corolla XEi 2.0">
+</div>
                   <div>
-                    <div class="vehicle-name">Maverick 1979 8V
-                    </div>
-                    <div class="vehicle-sub">Flex · Manual</div>
+                    <div class="vehicle-name">Nissan Kicks SV 1.6</div>
+                    <div class="vehicle-sub">Flex · Automático</div>
                   </div>
                 </div>
               </td>
@@ -360,30 +357,57 @@
               <td>175</td>
               <td>
                 <div class="actions-cell">
-                  <button class="btn-action" aria-label="Editar Nissan Kicks">Editar</button>
-                  <button class="btn-action btn-deactivate" aria-label="Pausar Nissan Kicks">Pausar</button>
-                  <button class="btn-more" aria-label="Mais opções Nissan Kicks"><i class="bi bi-three-dots-vertical"></i></button>
+                  <button type="button" class="btn-action" aria-label="Editar Nissan Kicks">Editar</button>
+                  <button type="button" class="btn-action btn-deactivate" aria-label="Pausar Nissan Kicks">Pausar</button>
                 </div>
               </td>
             </tr>
+ 
+            <tr data-status="ativo" data-preco="59900" data-views="150" data-ts="1">
+              <td>
+                <div class="d-flex align-items-center gap-3">
+                  <div class="vehicle-thumb" aria-hidden="true"><i class="bi bi-car-front"></i></div>
+                  <div>
+                    <div class="vehicle-name">Chevrolet Onix Plus LT 1.0</div>
+                    <div class="vehicle-sub">Flex · Manual</div>
+                  </div>
+                </div>
+              </td>
+              <td>2020/2021</td>
+              <td>R$ 59.900</td>
+              <td><span class="badge-status badge-ativo">Ativo</span></td>
+              <td>150</td>
+              <td>
+                <div class="actions-cell">
+                  <button type="button" class="btn-action" aria-label="Editar Chevrolet Onix">Editar</button>
+                  <button type="button" class="btn-action btn-deactivate" aria-label="Pausar Chevrolet Onix">Pausar</button>
+                </div>
+              </td>
+            </tr>
+ 
           </tbody>
         </table>
       </div>
-
+ 
+      <!-- Paginação -->
       <div class="pagination-wrap">
         <span id="paginacaoInfo">Mostrando 1 a 8 de 8 veículos</span>
         <div class="page-btns" role="navigation" aria-label="Paginação">
-          <button class="page-btn" aria-label="Página anterior" disabled>
+          <button type="button" class="page-btn" aria-label="Página anterior" disabled>
             <i class="bi bi-chevron-left"></i>
           </button>
-          <button class="page-btn active" aria-label="Página 1, atual" aria-current="page">1</button>
-          <button class="page-btn" aria-label="Próxima página" disabled>
+          <button type="button" class="page-btn active" aria-label="Página 1, atual" aria-current="page">1</button>
+          <button type="button" class="page-btn" aria-label="Próxima página" disabled>
             <i class="bi bi-chevron-right"></i>
           </button>
         </div>
       </div>
     </section>
-    <aside class="right-sidebar" aria-label="Informações e atalhos">>
+ 
+    <!-- SIDEBAR DIREITA -->
+    <aside class="right-sidebar" aria-label="Informações e atalhos">
+ 
+      <!-- Uso do plano -->
       <div class="sidebar-widget">
         <div class="widget-header">Uso do Plano</div>
         <div class="widget-body">
@@ -392,13 +416,15 @@
             <div class="plan-progress-fill" style="width: 53%"></div>
           </div>
           <div class="plan-usage-sub">Você pode cadastrar mais 7 veículos.</div>
-          <button class="btn-outline-sm w-100 mt-3" onclick="verPlano()">Ver detalhes do plano</button>
+          <button type="button" class="btn-outline-sm w-100 mt-3" onclick="verPlano()">Ver detalhes do plano</button>
         </div>
       </div>
+ 
+      <!-- Atalhos rápidos -->
       <div class="sidebar-widget">
         <div class="widget-header">Atalhos Rápidos</div>
         <div class="widget-body" style="padding-top: 8px;">
-          <a href="#" class="shortcut-item" onclick="abrirCadastro(); return false;">
+          <a href="./cadastrarVeiculo.html" class="shortcut-item">
             <i class="bi bi-plus-circle" aria-hidden="true"></i>
             Cadastrar Veículo
           </a>
@@ -420,6 +446,8 @@
           </a>
         </div>
       </div>
+ 
+      <!-- Dicas para vender mais -->
       <div class="sidebar-widget">
         <div class="widget-body">
           <div class="d-flex align-items-center gap-3 mb-3">
@@ -429,11 +457,13 @@
           <p style="font-size:12.5px;color:var(--text-muted);line-height:1.5;margin-bottom:14px;">
             Complete todas as informações do seu veículo e adicione boas fotos.
           </p>
-          <button class="btn-outline-sm w-100">Ver dicas</button>
+          <button type="button" class="btn-outline-sm w-100">Ver dicas</button>
         </div>
       </div>
+ 
+      <!-- Info usuário (espelho do sidebar-user do dashboard) -->
       <div class="sidebar-widget">
-        <div class="sidebar-user" style="border-top:none;margin-top:0;" aria-label="Usuário logado">
+       <div class="sidebar-user" role="region" style="border-top:none;margin-top:0;" aria-label="Usuário logado">
           <div class="user-avatar" aria-hidden="true">AL</div>
           <div>
             <div class="user-name">Auto Leste</div>
@@ -441,8 +471,11 @@
           </div>
         </div>
       </div>
+ 
     </aside>
-  </div>  
+ 
+  </div><!-- /agency-layout -->
 </main>
+
 </body>
 </html>
