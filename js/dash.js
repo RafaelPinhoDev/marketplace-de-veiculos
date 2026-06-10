@@ -1,4 +1,4 @@
- document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     const tooltipEls = document.querySelectorAll('[data-bs-toggle="tooltip"]');
     tooltipEls.forEach(el => new bootstrap.Tooltip(el));
   });
@@ -90,24 +90,24 @@
   /* ════════════════════════════════
    ACESSIBILIDADE
 ════════════════════════════════ */
-const FONTE_MIN   = 12;
-const FONTE_MAX   = 22;
-const FONTE_PASSO = 2;
+const FONTE_MIN   = 80;   // 80% do tamanho base
+const FONTE_MAX   = 130;  // 130% do tamanho base
+const FONTE_PASSO = 10;   // incremento de 10% por clique
 
-let fonteAtual = parseInt(localStorage.getItem('al_fonte')) || 16;
-document.documentElement.style.fontSize = fonteAtual + 'px';
+let fonteAtual = parseInt(localStorage.getItem('al_fonte')) || 100;
+document.documentElement.style.fontSize = fonteAtual + '%';
 
 function aumentarFonte() {
   if (fonteAtual >= FONTE_MAX) return;
   fonteAtual += FONTE_PASSO;
-  document.documentElement.style.fontSize = fonteAtual + 'px';
+  document.documentElement.style.fontSize = fonteAtual + '%';
   localStorage.setItem('al_fonte', fonteAtual);
 }
 
 function diminuirFonte() {
   if (fonteAtual <= FONTE_MIN) return;
   fonteAtual -= FONTE_PASSO;
-  document.documentElement.style.fontSize = fonteAtual + 'px';
+  document.documentElement.style.fontSize = fonteAtual + '%';
   localStorage.setItem('al_fonte', fonteAtual);
 }
 
@@ -128,4 +128,3 @@ function alternarContraste() {
     if (btn) btn.setAttribute('aria-pressed', 'true');
   }
 })();
-  
